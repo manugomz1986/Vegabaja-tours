@@ -1,0 +1,2156 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+ <meta name="theme-color" content="#0d7377">
+ <meta name="mobile-web-app-capable" content="yes">
+ <meta name="apple-mobile-web-app-capable" content="yes">
+ <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+ <meta name="apple-mobile-web-app-title" content="VegaBaja Virtual Tours">
+ <link rel="manifest" href="manifest.json">
+ <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
+ <link rel="apple-touch-icon" href="icons/icon-192.png">
+
+ <title>Tours Vega Baja Vega Baja del Segura | Orihuela, Torrevieja, Guardamar...</title>
+ <meta name="description" content="Descubre los tours e itinerarios guiados por los principales pueblos de la Vega Baja del Segura: Orihuela, Torrevieja, Guardamar, Callosa y más.">
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+ <style>
+ :root {
+ --primary: #0d7377;
+ --primary-dark: #095456;
+ --accent: #e8b923;
+ --light: #f8f9fa;
+ --dark: #1a1a2e;
+ --text: #333;
+ --white: #ffffff;
+ --shadow: 0 10px 30px rgba(0,0,0,0.08);
+ --radius: 16px;
+ }
+
+ * {
+ margin: 0;
+ padding: 0;
+ box-sizing: border-box;
+ }
+
+ body {
+ font-family: 'Poppins', sans-serif;
+ color: var(--text);
+ line-height: 1.6;
+ background: var(--light);
+ }
+
+ h1, h2, h3 {
+ font-family: 'Playfair Display', serif;
+ font-weight: 700;
+ }
+
+ a {
+ text-decoration: none;
+ color: inherit;
+ }
+
+ /* HEADER */
+ header {
+ background: var(--white);
+ box-shadow: 0 2px 15px rgba(0,0,0,0.06);
+ position: sticky;
+ top: 0;
+ z-index: 1000;
+ }
+
+ .nav-container {
+ max-width: 1200px;
+ margin: 0 auto;
+ padding: 1rem 1.5rem;
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ }
+
+ .logo {
+ font-size: 1.5rem;
+ font-weight: 700;
+ color: var(--primary);
+ display: flex;
+ align-items: center;
+ gap: 0.5rem;
+ }
+
+ .logo span {
+ color: var(--accent);
+ }
+
+ nav ul {
+ display: flex;
+ gap: 2rem;
+ list-style: none;
+ }
+
+ nav a {
+ font-weight: 500;
+ transition: color 0.3s;
+ }
+
+ nav a:hover {
+ color: var(--primary);
+ }
+
+ .menu-toggle {
+ display: none;
+ font-size: 1.8rem;
+ cursor: pointer;
+ background: none;
+ border: none;
+ }
+
+ /* HERO */
+ .hero {
+ background: linear-gradient(rgba(13, 115, 119, 0.75), rgba(9, 84, 86, 0.85)),
+ url('https://images.unsplash.com/photo-1560707303-4e980ce876ad?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+ color: white;
+ text-align: center;
+ padding: 8rem 1.5rem 6rem;
+ position: relative;
+ }
+
+ .hero h1 {
+ font-size: clamp(2.2rem, 5vw, 3.5rem);
+ margin-bottom: 1rem;
+ line-height: 1.2;
+ }
+
+ .hero p {
+ font-size: 1.25rem;
+ max-width: 700px;
+ margin: 0 auto 2rem;
+ opacity: 0.95;
+ }
+
+ .btn {
+ display: inline-block;
+ background: var(--accent);
+ color: var(--dark);
+ padding: 0.9rem 2rem;
+ border-radius: 50px;
+ font-weight: 600;
+ transition: all 0.3s;
+ border: none;
+ cursor: pointer;
+ }
+
+ .btn:hover {
+ background: #f0c93a;
+ transform: translateY(-3px);
+ box-shadow: 0 8px 20px rgba(232, 185, 35, 0.4);
+ }
+
+ /* SECTIONS */
+ section {
+ padding: 5rem 1.5rem;
+ }
+
+ .container {
+ max-width: 1200px;
+ margin: 0 auto;
+ }
+
+ .section-title {
+ text-align: center;
+ margin-bottom: 3rem;
+ }
+
+ .section-title h2 {
+ font-size: 2.4rem;
+ color: var(--primary-dark);
+ margin-bottom: 0.5rem;
+ }
+
+ .section-title p {
+ color: #666;
+ max-width: 600px;
+ margin: 0 auto;
+ }
+
+ /* ABOUT */
+ .about {
+ background: white;
+ }
+
+ .about-grid {
+ display: grid;
+ grid-template-columns: 1fr 1fr;
+ gap: 3rem;
+ align-items: center;
+ }
+
+ .about-content h3 {
+ font-size: 1.8rem;
+ margin-bottom: 1rem;
+ color: var(--primary);
+ }
+
+ .about-content p {
+ margin-bottom: 1rem;
+ color: #555;
+ }
+
+ .features {
+ display: grid;
+ grid-template-columns: 1fr 1fr;
+ gap: 1.2rem;
+ margin-top: 1.5rem;
+ }
+
+ .feature {
+ background: #f0f7f7;
+ padding: 1rem;
+ border-radius: 12px;
+ display: flex;
+ align-items: center;
+ gap: 0.8rem;
+ }
+
+ .feature span {
+ font-size: 1.5rem;
+ }
+
+ /* TOWNS */
+ .towns-grid {
+ display: grid;
+ grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+ gap: 2rem;
+ }
+
+ .town-card {
+ background: white;
+ border-radius: var(--radius);
+ overflow: hidden;
+ box-shadow: var(--shadow);
+ transition: transform 0.3s, box-shadow 0.3s;
+ }
+
+ .town-card:hover {
+ transform: translateY(-8px);
+ box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+ }
+
+ .town-img {
+ height: 200px;
+ background-size: cover;
+ background-position: center;
+ position: relative;
+ }
+
+ .town-badge {
+ position: absolute;
+ top: 1rem;
+ right: 1rem;
+ background: var(--accent);
+ color: var(--dark);
+ padding: 0.3rem 0.8rem;
+ border-radius: 20px;
+ font-size: 0.8rem;
+ font-weight: 600;
+ }
+
+ .town-content {
+ padding: 1.5rem;
+ }
+
+ .town-content h3 {
+ font-size: 1.5rem;
+ margin-bottom: 0.5rem;
+ color: var(--primary-dark);
+ }
+
+ .town-content p {
+ color: #555;
+ margin-bottom: 1rem;
+ font-size: 0.95rem;
+ }
+
+ .tour-list {
+ list-style: none;
+ margin-bottom: 1.2rem;
+ }
+
+ .tour-list li {
+ padding: 0.4rem 0;
+ font-size: 0.9rem;
+ display: flex;
+ align-items: flex-start;
+ gap: 0.5rem;
+ }
+
+ .tour-list li::before {
+ content: "✓";
+ color: var(--primary);
+ font-weight: bold;
+ }
+
+ .town-content .btn {
+ width: 100%;
+ text-align: center;
+ font-size: 0.95rem;
+ padding: 0.7rem;
+ }
+
+ /* EVENTS */
+ .events {
+ background: linear-gradient(135deg, #0d7377, #14919b);
+ color: white;
+ }
+
+ .events .section-title h2,
+ .events .section-title p {
+ color: white;
+ }
+
+ .events-grid {
+ display: grid;
+ grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+ gap: 1.5rem;
+ }
+
+ .event-card {
+ background: rgba(255,255,255,0.12);
+ backdrop-filter: blur(10px);
+ border-radius: var(--radius);
+ padding: 1.5rem;
+ border: 1px solid rgba(255,255,255,0.2);
+ }
+
+ .event-card h4 {
+ font-size: 1.2rem;
+ margin-bottom: 0.5rem;
+ }
+
+ .event-date {
+ display: inline-block;
+ background: var(--accent);
+ color: var(--dark);
+ padding: 0.25rem 0.8rem;
+ border-radius: 20px;
+ font-size: 0.85rem;
+ font-weight: 600;
+ margin-bottom: 0.8rem;
+ }
+
+ /* TIPS */
+ .tips-grid {
+ display: grid;
+ grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+ gap: 1.5rem;
+ }
+
+ .tip-card {
+ background: white;
+ padding: 1.8rem;
+ border-radius: var(--radius);
+ box-shadow: var(--shadow);
+ text-align: center;
+ }
+
+ .tip-card .icon {
+ font-size: 2.5rem;
+ margin-bottom: 1rem;
+ }
+
+ .tip-card h4 {
+ margin-bottom: 0.5rem;
+ color: var(--primary-dark);
+ }
+
+ /* FOOTER */
+ footer {
+ background: var(--dark);
+ color: #ccc;
+ padding: 3rem 1.5rem 1.5rem;
+ }
+
+ .footer-content {
+ max-width: 1200px;
+ margin: 0 auto;
+ display: grid;
+ grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+ gap: 2rem;
+ margin-bottom: 2rem;
+ }
+
+ .footer-content h4 {
+ color: white;
+ margin-bottom: 1rem;
+ font-size: 1.1rem;
+ }
+
+ .footer-content a {
+ display: block;
+ margin-bottom: 0.5rem;
+ transition: color 0.3s;
+ }
+
+ .footer-content a:hover {
+ color: var(--accent);
+ }
+
+ .copyright {
+ text-align: center;
+ padding-top: 1.5rem;
+ border-top: 1px solid #333;
+ font-size: 0.9rem;
+ }
+
+ /* RESPONSIVE */
+ @media (max-width: 900px) {
+ .about-grid {
+ grid-template-columns: 1fr;
+ }
+
+ nav ul {
+ display: none;
+ position: absolute;
+ top: 70px;
+ left: 0;
+ right: 0;
+ background: white;
+ flex-direction: column;
+ padding: 1.5rem;
+ box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+ gap: 1rem;
+ }
+
+ nav ul.active {
+ display: flex;
+ }
+
+ .menu-toggle {
+ display: block;
+ }
+ }
+
+ @media (max-width: 600px) {
+ .hero {
+ padding: 6rem 1rem 4rem;
+ }
+
+ section {
+ padding: 3.5rem 1rem;
+ }
+
+ .features {
+ grid-template-columns: 1fr;
+ }
+ }
+
+ /* DETAILED TOWN SECTIONS - hidden until unlocked */
+ .town-detail {
+ display: none;
+ background: white;
+ border-radius: var(--radius);
+ overflow: hidden;
+ box-shadow: var(--shadow);
+ margin-bottom: 3rem;
+ }
+
+ .town-detail.visible {
+ display: block;
+ animation: fadeIn 0.4s ease;
+ }
+
+ @keyframes fadeIn {
+ from { opacity: 0; transform: translateY(12px); }
+ to { opacity: 1; transform: translateY(0); }
+ }
+
+ .btn-locked {
+ background: #ccc !important;
+ color: #666 !important;
+ cursor: not-allowed;
+ position: relative;
+ }
+
+ .btn-locked:hover {
+ transform: none !important;
+ box-shadow: none !important;
+ background: #ccc !important;
+ }
+
+ .btn-locked .lock-icon {
+ margin-right: 0.4rem;
+ }
+
+ .btn-unlocked {
+ background: var(--accent);
+ color: var(--dark);
+ }
+
+ /* PAYMENT MODAL */
+ .modal-overlay {
+ display: none;
+ position: fixed;
+ inset: 0;
+ background: rgba(0,0,0,0.55);
+ z-index: 2000;
+ align-items: center;
+ justify-content: center;
+ padding: 1rem;
+ }
+
+ .modal-overlay.open {
+ display: flex;
+ }
+
+ .modal {
+ background: white;
+ border-radius: 16px;
+ max-width: 420px;
+ width: 100%;
+ padding: 2rem;
+ box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+ text-align: center;
+ position: relative;
+ }
+
+ .modal h3 {
+ font-size: 1.5rem;
+ color: var(--primary-dark);
+ margin-bottom: 0.5rem;
+ }
+
+ .modal p {
+ color: #555;
+ margin-bottom: 1.2rem;
+ font-size: 0.95rem;
+ }
+
+ .modal .price {
+ font-size: 2rem;
+ font-weight: 700;
+ color: var(--primary);
+ margin: 1rem 0;
+ }
+
+ .modal .price span {
+ font-size: 1rem;
+ font-weight: 400;
+ color: #888;
+ }
+
+ .modal-actions {
+ display: flex;
+ gap: 0.8rem;
+ margin-top: 1.5rem;
+ }
+
+ .modal-actions .btn {
+ flex: 1;
+ text-align: center;
+ }
+
+ .btn-outline {
+ background: transparent;
+ border: 2px solid #ddd;
+ color: #555;
+ }
+
+ .btn-outline:hover {
+ border-color: var(--primary);
+ color: var(--primary);
+ background: transparent;
+ transform: none;
+ box-shadow: none;
+ }
+
+ .modal-close {
+ position: absolute;
+ top: 0.8rem;
+ right: 1rem;
+ background: none;
+ border: none;
+ font-size: 1.5rem;
+ cursor: pointer;
+ color: #999;
+ }
+
+ .payment-form {
+ text-align: left;
+ margin-top: 1rem;
+ }
+
+ .payment-form label {
+ display: block;
+ font-size: 0.85rem;
+ color: #666;
+ margin-bottom: 0.3rem;
+ }
+
+ .payment-form input {
+ width: 100%;
+ padding: 0.7rem 0.9rem;
+ border: 1px solid #ddd;
+ border-radius: 8px;
+ margin-bottom: 0.9rem;
+ font-size: 0.95rem;
+ font-family: inherit;
+ }
+
+ .payment-form input:focus {
+ outline: none;
+ border-color: var(--primary);
+ }
+
+ .payment-success {
+ display: none;
+ color: var(--primary);
+ font-weight: 600;
+ margin-top: 1rem;
+ }
+
+ .unlock-badge {
+ display: inline-block;
+ background: #e8f5e9;
+ color: #2e7d32;
+ font-size: 0.8rem;
+ padding: 0.25rem 0.7rem;
+ border-radius: 20px;
+ margin-top: 0.5rem;
+ font-weight: 600;
+ }
+
+
+ .town-detail-header {
+ display: grid;
+ grid-template-columns: 1fr 1fr;
+ min-height: 280px;
+ }
+
+ .town-detail-img {
+ background-size: cover;
+ background-position: center;
+ min-height: 280px;
+ }
+
+ .town-detail-intro {
+ padding: 2rem;
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+ }
+
+ .town-detail-intro h3 {
+ font-size: 2rem;
+ color: var(--primary-dark);
+ margin-bottom: 0.5rem;
+ }
+
+ .town-detail-intro .meta {
+ color: var(--primary);
+ font-weight: 600;
+ margin-bottom: 1rem;
+ font-size: 0.95rem;
+ }
+
+ .town-detail-intro p {
+ color: #555;
+ margin-bottom: 0.8rem;
+ }
+
+ .town-detail-body {
+ padding: 0 2rem 2rem;
+ }
+
+ .itinerary {
+ list-style: none;
+ counter-reset: step;
+ }
+
+ .itinerary li {
+ position: relative;
+ padding: 1.2rem 1.2rem 1.2rem 3.5rem;
+ border-left: 3px solid #e0e0e0;
+ margin-left: 1rem;
+ }
+
+ .itinerary li:last-child {
+ border-left-color: transparent;
+ }
+
+ .itinerary li::before {
+ counter-increment: step;
+ content: counter(step);
+ position: absolute;
+ left: -1.1rem;
+ top: 1.2rem;
+ width: 2rem;
+ height: 2rem;
+ background: var(--primary);
+ color: white;
+ border-radius: 50%;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ font-weight: 600;
+ font-size: 0.9rem;
+ }
+
+ .itinerary li strong {
+ display: block;
+ color: var(--primary-dark);
+ margin-bottom: 0.3rem;
+ font-size: 1.05rem;
+ }
+
+ .itinerary li p {
+ color: #555;
+ font-size: 0.95rem;
+ margin: 0;
+ }
+
+ .tips-box {
+ background: #f0f7f7;
+ border-radius: 12px;
+ padding: 1.5rem;
+ margin-top: 1.5rem;
+ }
+
+ .tips-box h4 {
+ color: var(--primary);
+ margin-bottom: 0.8rem;
+ }
+
+ .tips-box ul {
+ list-style: none;
+ padding: 0;
+ }
+
+ .tips-box li {
+ padding: 0.3rem 0;
+ font-size: 0.95rem;
+ color: #444;
+ }
+
+ .tips-box li::before {
+ content: "→ ";
+ color: var(--primary);
+ font-weight: bold;
+ }
+
+ @media (max-width: 800px) {
+ .town-detail-header {
+ grid-template-columns: 1fr;
+ }
+ .town-detail-img {
+ min-height: 200px;
+ }
+ }
+
+
+ /* LANGUAGE SWITCHER */
+ .lang-switcher {
+ display: flex;
+ gap: 0.35rem;
+ align-items: center;
+ }
+
+ .lang-btn {
+ background: transparent;
+ border: 1px solid #ddd;
+ border-radius: 6px;
+ padding: 0.25rem 0.5rem;
+ font-size: 0.8rem;
+ font-weight: 600;
+ cursor: pointer;
+ color: #555;
+ transition: all 0.2s;
+ font-family: inherit;
+ }
+
+ .lang-btn:hover,
+ .lang-btn.active {
+ background: var(--primary);
+ color: white;
+ border-color: var(--primary);
+ }
+
+
+ /* RTL for Arabic */
+ html[dir="rtl"] body {
+ direction: rtl;
+ text-align: right;
+ }
+
+ html[dir="rtl"] .nav-container {
+ flex-direction: row-reverse;
+ }
+
+ html[dir="rtl"] nav ul {
+ flex-direction: row-reverse;
+ }
+
+ html[dir="rtl"] .itinerary li {
+ padding: 1.2rem 3.5rem 1.2rem 1.2rem;
+ border-left: none;
+ border-right: 3px solid #e0e0e0;
+ margin-left: 0;
+ margin-right: 1rem;
+ }
+
+ html[dir="rtl"] .itinerary li:last-child {
+ border-right-color: transparent;
+ }
+
+ html[dir="rtl"] .itinerary li::before {
+ left: auto;
+ right: -1.1rem;
+ }
+
+ html[dir="rtl"] .town-detail-header {
+ direction: rtl;
+ }
+
+ html[dir="rtl"] .modal {
+ text-align: right;
+ }
+
+ html[dir="rtl"] .payment-form {
+ text-align: right;
+ }
+
+ html[dir="rtl"] .modal-actions {
+ flex-direction: row-reverse;
+ }
+
+ @media (max-width: 900px) {
+ .lang-switcher {
+ order: -1;
+ }
+ }
+
+
+ /* ANDROID / MOBILE */
+ html { -webkit-tap-highlight-color: transparent; -webkit-text-size-adjust: 100%; }
+ body {
+ overscroll-behavior-y: contain;
+ padding-top: env(safe-area-inset-top);
+ padding-bottom: env(safe-area-inset-bottom);
+ }
+ header { padding-top: env(safe-area-inset-top); }
+ @media (max-width: 600px) {
+ .nav-container { flex-wrap: wrap; gap: 0.5rem; }
+ .lang-switcher { margin-left: auto; }
+ .town-card .btn, .itinerary-btn { min-height: 48px; font-size: 1rem; }
+ .modal { max-height: 90vh; overflow-y: auto; }
+ .lang-btn { min-width: 40px; min-height: 36px; }
+ }
+
+ </style>
+</head>
+<body>
+
+ <!-- HEADER -->
+ <header>
+ <div class="nav-container">
+ <a href="#" class="logo">VegaBaja<span>Tours</span></a>
+ <div class="lang-switcher" id="lang-switcher">
+ <button type="button" class="lang-btn active" data-lang="es" title="Español">ES</button>
+ <button type="button" class="lang-btn" data-lang="en" title="English">EN</button>
+ <button type="button" class="lang-btn" data-lang="fr" title="Français">FR</button>
+ <button type="button" class="lang-btn" data-lang="ar" title="العربية">AR</button>
+ </div>
+ <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+ <nav>
+ <ul id="nav-menu">
+ <li><a href="#inicio" data-i18n="nav_home">Inicio</a></li>
+ <li><a href="#pueblos" data-i18n="nav_towns">Pueblos</a></li>
+ <li><a href="#eventos" data-i18n="nav_events">Eventos</a></li>
+ <li><a href="#consejos" data-i18n="nav_tips">Consejos</a></li>
+ <li><a href="#contacto" data-i18n="nav_contact">Contacto</a></li>
+ </ul>
+ </nav>
+ </div>
+ </header>
+
+ <!-- HERO -->
+ <section class="hero" id="inicio">
+ <h1 data-i18n="hero_title">Tours por la Vega Baja del Segura</h1>
+ <p data-i18n="hero_sub">Descubre el patrimonio, la naturaleza y la auténtica esencia de Orihuela, Torrevieja, Guardamar y los pueblos más bonitos de la comarca.</p>
+ <a href="#pueblos" class="btn" data-i18n="hero_btn">Explorar pueblos</a>
+ </section>
+
+ <!-- ABOUT -->
+ <section class="about">
+ <div class="container">
+ <div class="section-title">
+ <h2 data-i18n="about_title">La Vega Baja te espera</h2>
+ <p data-i18n="about_sub">Una comarca de contrastes entre huerta, costa, lagunas y monumentos históricos</p>
+ </div>
+ <div class="about-grid">
+ <div class="about-content">
+ <h3 data-i18n="about_h3">Tu tierra y la mía</h3>
+ <p data-i18n="about_p1">La Vega Baja del Segura, en el sur de Alicante, es una tierra de ricos contrastes: la huerta más fértil de Europa, lagunas rosadas, dunas de pinares, castillos y un patrimonio monumental excepcional.</p>
+ <p data-i18n="about_p2">Descubre rutas e itinerarios detallados por los pueblos más emblemáticos de la comarca.</p>
+ <div class="features">
+ <div class="feature"><span>🏛️</span> <span data-i18n="feat1">Patrimonio histórico</span></div>
+ <div class="feature"><span>🌿</span> <span data-i18n="feat2">Parques naturales</span></div>
+ <div class="feature"><span>🏖️</span> <span data-i18n="feat3">Costa y dunas</span></div>
+ <div class="feature"><span>🍋</span> <span data-i18n="feat4">Huerta y gastronomía</span></div>
+ </div>
+ </div>
+ <div>
+ <img src="https://images.unsplash.com/photo-1555881403-32f82b719dc5?auto=format&fit=crop&w=800&q=80" alt="Paisaje Vega Baja" style="width:100%; border-radius:16px; box-shadow: var(--shadow);">
+ </div>
+ </div>
+ </div>
+ </section>
+
+ <!-- PUEBLOS -->
+ <section id="pueblos">
+ <div class="container">
+ <div class="section-title">
+ <h2 data-i18n="towns_title">Principales pueblos con tours</h2>
+ <p data-i18n="towns_sub">Rutas a pie de aproximadamente 1 hora. Elige un destino y sigue el itinerario detallado</p>
+ </div>
+
+ <!-- Overview cards -->
+ <div class="towns-grid" style="margin-bottom: 4rem;">
+ <div class="town-card">
+ <div class="town-img" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Conjunto_hist%C3%B3rico_de_Orihuela.jpg/960px-Conjunto_hist%C3%B3rico_de_Orihuela.jpg');">
+ <span class="town-badge">Capital</span>
+ </div>
+ <div class="town-content">
+ <h3>Orihuela</h3>
+ <p data-i18n="card_orihuela">Casco histórico monumental, catedral, Miguel Hernández y «el Escorial del Levante».</p>
+ <button type="button" class="btn itinerary-btn" data-town="orihuela" style="display:block;width:100%;text-align:center;">
+ <span data-i18n="btn_unlocked">Ver itinerario completo</span>
+ </button>
+ <span class="unlock-badge" id="badge-orihuela" style="display:none;"><span data-i18n="badge_unlocked">✓ Desbloqueado</span></span>
+ </div>
+ </div>
+
+ <div class="town-card">
+ <div class="town-img" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Sunset_reflections_of_Torrevieja_%28Unsplash%29.jpg/1280px-Sunset_reflections_of_Torrevieja_%28Unsplash%29.jpg');">
+ <span class="town-badge">Costa</span>
+ </div>
+ <div class="town-content">
+ <h3>Torrevieja</h3>
+ <p data-i18n="card_torrevieja">Paseo marítimo, Bella Lola, Eras de la Sal y el fuerte vínculo con el mar y la sal.</p>
+ <button type="button" class="btn itinerary-btn" data-town="torrevieja" style="display:block;width:100%;text-align:center;">
+ <span data-i18n="btn_unlocked">Ver itinerario completo</span>
+ </button>
+ <span class="unlock-badge" id="badge-torrevieja" style="display:none;"><span data-i18n="badge_unlocked">✓ Desbloqueado</span></span>
+ </div>
+ </div>
+
+ <div class="town-card">
+ <div class="town-img" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Dunas_Guardamar.jpg/1280px-Dunas_Guardamar.jpg');">
+ <span class="town-badge">Naturaleza</span>
+ </div>
+ <div class="town-content">
+ <h3>Guardamar del Segura</h3>
+ <p data-i18n="card_guardamar">Castillo, dunas, pinada del Ingeniero Mira y restos fenicios e islámicos.</p>
+ <button type="button" class="btn itinerary-btn" data-town="guardamar" style="display:block;width:100%;text-align:center;">
+ <span data-i18n="btn_unlocked">Ver itinerario completo</span>
+ </button>
+ <span class="unlock-badge" id="badge-guardamar" style="display:none;"><span data-i18n="badge_unlocked">✓ Desbloqueado</span></span>
+ </div>
+ </div>
+
+ <div class="town-card">
+ <div class="town-img" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Almorad%C3%AD._Plaza_de_la_Constituci%C3%B3n_y_Ayuntamiento.JPG/1280px-Almorad%C3%AD._Plaza_de_la_Constituci%C3%B3n_y_Ayuntamiento.JPG');">
+ <span class="town-badge">Huerta</span>
+ </div>
+ <div class="town-content">
+ <h3>Almoradí</h3>
+ <p data-i18n="card_almoradi">Plaza de la Constitución, trazado de Larramendi tras el terremoto de 1829 y patrimonio local.</p>
+ <button type="button" class="btn itinerary-btn" data-town="almoradi" style="display:block;width:100%;text-align:center;">
+ <span data-i18n="btn_unlocked">Ver itinerario completo</span>
+ </button>
+ <span class="unlock-badge" id="badge-almoradi" style="display:none;"><span data-i18n="badge_unlocked">✓ Desbloqueado</span></span>
+ </div>
+ </div>
+ </div>
+
+ <!-- ========== ORIHUELA DETAIL ========== -->
+ <div class="town-detail" id="orihuela-detail">
+ <div class="town-detail-header">
+ <div class="town-detail-img" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Conjunto_hist%C3%B3rico_de_Orihuela.jpg/960px-Conjunto_hist%C3%B3rico_de_Orihuela.jpg');"></div>
+ <div class="town-detail-intro">
+ <h3 data-i18n="ori_name">Orihuela</h3>
+ <div class="meta" data-i18n="ori_meta">Tour ~1 hora · 2–2,5 km · Dificultad fácil</div>
+ <p data-i18n="ori_intro">Capital histórica de la Vega Baja. Casco antiguo declarado Conjunto Histórico-Artístico. Ideal para exteriores; si entras en monumentos suma tiempo y pequeña entrada (≈2 €).</p>
+ <p><strong data-i18n="start_label">Punto de inicio:</strong> <span data-i18n="ori_start">Colegio Diocesano de Santo Domingo (al este del casco antiguo). Aparcamiento cerca (Paseo de Calvo Sotelo / Glorieta).</span></p>
+ </div>
+ </div>
+         <div class="town-detail-body">
+          <div class="audio-guide">
+            <h4 data-i18n="audio_title">🎧 Guía de audio del itinerario</h4>
+            <p data-i18n="audio_hint">Escucha la explicación paso a paso mientras recorres la ruta.</p>
+            <audio id="audio-orihuela" data-town="orihuela" controls preload="metadata" src="audio/orihuela.mp3">Tu navegador no soporta audio.</audio>
+          </div>
+ <ol class="itinerary">
+ <li><strong data-i18n="ori_s1t">1. Colegio Diocesano de Santo Domingo (5-7 min)</strong><p data-i18n="ori_s1d">El edificio más imponente de Orihuela. Convento dominico y antigua universidad del siglo XVI (renacentista, manierista y barroco). Conocido como «el Escorial del Levante» por su enorme tamaño. Observa la fachada principal y el arco de acceso.</p></li>
+ <li><strong data-i18n="ori_s2t">2. Casa-Museo de Miguel Hernández (3-5 min)</strong><p data-i18n="ori_s2d">A pocos pasos del colegio. Casa donde vivió el poeta oriolano entre 1914 y 1934. Desde fuera se aprecia el ambiente sencillo que inspiró gran parte de su obra. Entrada libre si está abierta.</p></li>
+ <li><strong data-i18n="ori_s3t">3. Calles históricas hacia el centro (5-7 min)</strong><p data-i18n="ori_s3d">Sigue hacia el oeste por Calle de la Cruz, Calle San Juan o similares. Pasarás cerca de la Casa Natal de Miguel Hernández y del Museo de Semana Santa (antigua Iglesia de la Merced).</p></li>
+ <li><strong data-i18n="ori_s4t">4. Catedral del Salvador y Santa María + Palacio Episcopal (10-12 min)</strong><p data-i18n="ori_s4d">El corazón monumental. La Catedral (siglos XIII-XVIII) se construyó sobre una antigua mezquita; destaca su portada gótica. Justo al lado el Palacio Episcopal (s. XVIII), sede del Museo Diocesano de Arte Sacro. La plaza del Salvador es ideal para fotos.</p></li>
+ <li><strong data-i18n="ori_s5t">5. Iglesia de Santas Justa y Rufina + Museo de la Muralla (8-10 min)</strong><p data-i18n="ori_s5d">Iglesia con torre cuadrada característica y elementos de varios estilos (incluidos restos árabes). Muy cerca el Museo de la Muralla, con restos de murallas medievales y casas árabes del s. XII (entrada según horario).</p></li>
+ <li><strong data-i18n="ori_s6t">6. Iglesia de Santiago Apóstol y Santuario de Monserrate (8-10 min)</strong><p data-i18n="ori_s6d">Iglesia de Santiago (s. XIV, gótica, vínculo con los Reyes Católicos). Santuario de la Virgen de Monserrate (patrona de Orihuela), edificio barroco del s. XVII-XVIII. Uno de los lugares más queridos por los oriolanos.</p></li>
+ <li><strong data-i18n="ori_s7t">7. Final: Plaza de Santiago o Glorieta Gabriel Miró</strong><p data-i18n="ori_s7d">Desde aquí tienes cerca el río Segura. Puedes continuar paseando o buscar un café.</p></li>
+ </ol>
+ <div class="tips-box">
+ <h4 data-i18n="tips_heading">Consejos prácticos</h4>
+ <ul>
+ <li data-i18n="ori_tip1">Mejor horario: mañana (10:00-13:00) o tarde suave para evitar el calor.</li>
+ <li data-i18n="ori_tip2">Lleva agua, especialmente en verano.</li>
+ <li data-i18n="ori_tip3">Extra opcional: subida al Castillo de Orihuela (Monte San Miguel) o el Palmeral (+30-45 min).</li>
+ <li data-i18n="ori_tip4">Oficina de Turismo: Plaza de la Soledad, 5.</li>
+ </ul>
+ </div>
+ </div>
+ </div>
+
+ <!-- ========== TORREVIEJA DETAIL ========== -->
+ <div class="town-detail" id="torrevieja-detail">
+ <div class="town-detail-header">
+ <div class="town-detail-img" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Sunset_reflections_of_Torrevieja_%28Unsplash%29.jpg/1280px-Sunset_reflections_of_Torrevieja_%28Unsplash%29.jpg');"></div>
+ <div class="town-detail-intro">
+ <h3 data-i18n="tor_name">Torrevieja</h3>
+ <div class="meta" data-i18n="tor_meta">Tour ~1 hora · 2,5–3 km · Todo llano y peatonal</div>
+ <p data-i18n="tor_intro">Ruta centrada en el casco urbano y el paseo marítimo. Empieza y termina en la zona playa/puerto. Ideal a primera hora de la mañana o al atardecer.</p>
+ <p><strong data-i18n="start_label">Punto de inicio:</strong> <span data-i18n="tor_start">Paseo Marítimo Juan Aparicio, frente a Playa del Cura.</span></p>
+ </div>
+ </div>
+         <div class="town-detail-body">
+          <div class="audio-guide">
+            <h4 data-i18n="audio_title">🎧 Guía de audio del itinerario</h4>
+            <p data-i18n="audio_hint">Escucha la explicación paso a paso mientras recorres la ruta.</p>
+            <audio id="audio-torrevieja" data-town="torrevieja" controls preload="metadata" src="audio/torrevieja.mp3">Tu navegador no soporta audio.</audio>
+          </div>
+ <ol class="itinerary">
+ <li><strong data-i18n="tor_s1t">1. Paseo Marítimo Juan Aparicio (0-10 min)</strong><p data-i18n="tor_s1d">El paseo más animado y emblemático. Remodelado en 1999 por la arquitecta Carme Pinós. Une la playa con el puerto. Terrazas, heladerías y vistas abiertas al Mediterráneo.</p></li>
+ <li><strong data-i18n="tor_s2t">2. Escultura «La Bella Lola» (10-15 min)</strong><p data-i18n="tor_s2d">Una de las imágenes más fotografiadas de Torrevieja. Representa a una mujer sentada mirando al mar, esperando el regreso de su marido marinero. Simboliza la tradición marinera de la ciudad.</p></li>
+ <li><strong data-i18n="tor_s3t">3. Monumento al Hombre del Mar y Dique de Levante (15-25 min)</strong><p data-i18n="tor_s3d">Homenaje a marineros y pescadores. Desde aquí puedes asomarte al Dique de Levante (espigón de más de 1,5 km). Basta con caminar un tramo para disfrutar de las vistas y las pérgolas.</p></li>
+ <li><strong data-i18n="tor_s4t">4. Paseo de la Libertad («los hippies») y Plaza Waldo Calero (25-35 min)</strong><p data-i18n="tor_s4d">Paseo conocido por los puestos de artesanía y souvenirs. Llegarás a la Plaza Waldo Calero, con bancos de cerámica inspirados en las olas y una fuente. Rincón fresco y agradable.</p></li>
+ <li><strong data-i18n="tor_s5t">5. Sociedad Cultural Casino de Torrevieja (35-40 min)</strong><p data-i18n="tor_s5d">Edificio modernista de finales del s. XIX (fundado en 1867). Uno de los más representativos de la ciudad. Hoy es sociedad cultural y café-restaurante. Puedes entrar a ver el salón principal y la sala neo-nazarí.</p></li>
+ <li><strong data-i18n="tor_s6t">6. Paseo Vista Alegre + Monumentos a los Músicos y al Coralista (40-50 min)</strong><p data-i18n="tor_s6d">Homenaje a la fuerte tradición coral y al Certamen Internacional de Habaneras y Polifonía (Interés Turístico Internacional). El Monumento al Coralista es de los más fotografiados.</p></li>
+ <li><strong data-i18n="tor_s7t">7. Conjunto Histórico Eras de la Sal (50-55 min)</strong><p data-i18n="tor_s7d">Antiguo complejo salinero del s. XVIII (1777-1958). Excelente ejemplo de arquitectura industrial ligada a la historia salinera de Torrevieja, una de las mayores productoras de sal marina de Europa.</p></li>
+ <li><strong data-i18n="tor_s8t">8. Museo del Mar y de la Sal (opcional, 55-60 min)</strong><p data-i18n="tor_s8d">Explica la relación de Torrevieja con el mar y la sal mediante objetos, maquetas y fotografías. Consulta horarios de entrada (consulta horarios).</p></li>
+ </ol>
+ <div class="tips-box">
+ <h4 data-i18n="tips_heading">Consejos prácticos</h4>
+ <ul>
+ <li data-i18n="tor_tip1">Todo el recorrido es llano y accesible.</li>
+ <li data-i18n="tor_tip2">Lleva agua y protección solar (en verano hace bastante calor).</li>
+ <li data-i18n="tor_tip3">Extra: Iglesia Arciprestal de la Inmaculada Concepción (Plaza de la Constitución).</li>
+ <li data-i18n="tor_tip4">La Laguna Rosa y el Parque Natural merecen visita aparte (coche/autobús, 10-15 min).</li>
+ </ul>
+ </div>
+ </div>
+ </div>
+
+ <!-- ========== GUARDAMAR DETAIL ========== -->
+ <div class="town-detail" id="guardamar-detail">
+ <div class="town-detail-header">
+ <div class="town-detail-img" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Dunas_Guardamar.jpg/1280px-Dunas_Guardamar.jpg');"></div>
+ <div class="town-detail-intro">
+ <h3 data-i18n="gua_name">Guardamar del Segura</h3>
+ <div class="meta" data-i18n="gua_meta">Tour ~1 hora · 1,5–2 km · Fácil (pequeña subida al castillo)</div>
+ <p data-i18n="gua_intro">Combina historia milenaria, vistas y el inicio de la pinada/dunas. El recorrido exterior es libre; el museo puede tener entrada según horario.</p>
+ <p><strong data-i18n="start_label">Punto de inicio:</strong> <span data-i18n="gua_start">Museo Arqueológico de Guardamar (MAG) – Casa de Cultura (Carrer Colom / zona central).</span></p>
+ </div>
+ </div>
+         <div class="town-detail-body">
+          <div class="audio-guide">
+            <h4 data-i18n="audio_title">🎧 Guía de audio del itinerario</h4>
+            <p data-i18n="audio_hint">Escucha la explicación paso a paso mientras recorres la ruta.</p>
+            <audio id="audio-guardamar" data-town="guardamar" controls preload="metadata" src="audio/guardamar.mp3">Tu navegador no soporta audio.</audio>
+          </div>
+ <ol class="itinerary">
+ <li><strong data-i18n="gua_s1t">1. Museo Arqueológico de Guardamar – Casa de Cultura (5-8 min)</strong><p data-i18n="gua_s1d">Restos de las culturas que habitaron el municipio (fenicia, íbera, romana, islámica y cristiana). Destaca la réplica de la Dama de Guardamar (original en el MARQ de Alicante). Punto de partida de las rutas oficiales «Memoria de Arena».</p></li>
+ <li><strong data-i18n="gua_s2t">2. Castillo de Guardamar (subida suave + 10-12 min)</strong><p data-i18n="gua_s2d">Cerro del Castell. Restos de la antigua villa amurallada fundada por Alfonso X el Sabio en 1271. Ocupación desde el s. VIII a.C. Destruido en gran parte por los terremotos de 1829. Mejores vistas del casco urbano, desembocadura del Segura y dunas. Paneles con códigos QR y restos de murallas (Baluarte de la Pólvora).</p></li>
+ <li><strong data-i18n="gua_s3t">3. Casco urbano, Plaza de la Constitución e Iglesia de San Jaime (10 min)</strong><p data-i18n="gua_s3d">Tras el terremoto de 1829 se rediseñó el pueblo con trazado más abierto (proyecto de José Agustín de Larramendi). Cerca está la Casa-Museo del Ingeniero Mira, dedicada a Francisco Mira i Botella, que a principios del s. XX fijó las dunas plantando cientos de miles de pinos.</p></li>
+ <li><strong data-i18n="gua_s4t">4. Paseo del Ingeniero Mira y Parque Alfonso XIII – La Pinada (10-12 min)</strong><p data-i18n="gua_s4d">Paseo histórico (abierto en 1903) que conecta el centro con el mar a través de las dunas. Sistema dunar de unas 800 hectáreas, uno de los mayores ecosistemas litorales del Mediterráneo español. Pinos piñoneros, eucaliptos, palmeras y cipreses plantados para frenar el avance de la arena.</p></li>
+ <li><strong data-i18n="gua_s5t">5. Yacimientos Rábita Califal y La Fonteta (opcional +5-10 min)</strong><p data-i18n="gua_s5d">Rábita Califal: monasterio islámico del s. X, único de su tipo casi completo en la península. La Fonteta: ciudad fenicia de los s. VIII-VI a.C. Ambos entre la pinada, cerca del mar. Hay paneles informativos.</p></li>
+ <li><strong data-i18n="gua_s6t">6. Final: Parque Reina Sofía o Playa Centro / Paseo marítimo</strong><p data-i18n="gua_s6d">Espacio verde con sombra junto al mar. La Playa Centro tiene bandera azul, servicios y terrazas. Desde aquí puedes quedarte en la playa o volver por el mismo camino.</p></li>
+ </ol>
+ <div class="tips-box">
+ <h4 data-i18n="tips_heading">Consejos prácticos</h4>
+ <ul>
+ <li data-i18n="gua_tip1">Mejor momento: mañana o tarde para evitar el calor del mediodía.</li>
+ <li data-i18n="gua_tip2">Lleva agua, calzado cómodo y protección solar.</li>
+ <li data-i18n="gua_tip3">Códigos QR en varios puntos de las rutas «Memoria de Arena» (audioguías).</li>
+ <li data-i18n="gua_tip4">Versión guiada completa (Castillo + pinada + Rábita/Fonteta): viernes en inglés y sábados en español (consulta guardamarturismo.com).</li>
+ </ul>
+ </div>
+ </div>
+ </div>
+
+ <!-- ========== ALMORADÍ DETAIL ========== -->
+ <div class="town-detail" id="almoradi-detail">
+ <div class="town-detail-header">
+ <div class="town-detail-img" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Almorad%C3%AD._Plaza_de_la_Constituci%C3%B3n_y_Ayuntamiento.JPG/1280px-Almorad%C3%AD._Plaza_de_la_Constituci%C3%B3n_y_Ayuntamiento.JPG');"></div>
+ <div class="town-detail-intro">
+ <h3 data-i18n="alm_name">Almoradí</h3>
+ <div class="meta" data-i18n="alm_meta">Tour ~1 hora · 1,5–2 km · Muy fácil y plano</div>
+ <p data-i18n="alm_intro">Recorrido por el centro histórico. Ideal para hacerlo a tu ritmo. Tras el terremoto de 1829, el ingeniero José Agustín de Larramendi rediseñó el pueblo con calles anchas y manzanas regulares (el famoso «trazado de Larramendi»).</p>
+ <p><strong data-i18n="start_label">Punto de inicio:</strong> <span data-i18n="alm_start">Plaza de la Constitución (punto de encuentro habitual de las rutas oficiales del ayuntamiento).</span></p>
+ </div>
+ </div>
+         <div class="town-detail-body">
+          <div class="audio-guide">
+            <h4 data-i18n="audio_title">🎧 Guía de audio del itinerario</h4>
+            <p data-i18n="audio_hint">Escucha la explicación paso a paso mientras recorres la ruta.</p>
+            <audio id="audio-almoradi" data-town="almoradi" controls preload="metadata" src="audio/almoradi.mp3">Tu navegador no soporta audio.</audio>
+          </div>
+ <ol class="itinerary">
+ <li><strong data-i18n="alm_s1t">1. Plaza de la Constitución (inicio – 10 min)</strong><p data-i18n="alm_s1d">Centro neurálgico y «salón de estar» del pueblo. Aquí se concentran el Ayuntamiento, la iglesia y los grandes ficus centenarios que dan sombra. Mejor lugar para situarte y sentir el ambiente local.</p></li>
+ <li><strong data-i18n="alm_s2t">2. Iglesia Parroquial de San Andrés (5-10 min)</strong><p data-i18n="alm_s2d">Justo en la plaza. Edificada entre 1829 y 1861 tras la destrucción del templo anterior por el gran terremoto. Estilo neoclásico, con dos torres laterales y el Sagrado Corazón en lo alto. Edificio más emblemático del municipio y símbolo de la reconstrucción.</p></li>
+ <li><strong data-i18n="alm_s3t">3. Casino de Almoradí (Calle Tomás Capdepón – 5-8 min)</strong><p data-i18n="alm_s3d">A pocos pasos de la plaza. Inaugurado en 1882, gran referente social y cultural de los s. XIX y XX. Durante décadas fue el lugar de reuniones, bailes y actos de la burguesía local. Hoy sigue acogiendo exposiciones y actividades.</p></li>
+ <li><strong data-i18n="alm_s4t">4. Juzgado de Aguas del Azud de Alfeitamí (Calle Tomás Capdepón, 23 – 5 min)</strong><p data-i18n="alm_s4d">Institución histórica clave en una zona de huerta. Se encarga de la gestión y distribución del agua de riego (acequias y azarbes). Refleja la importancia ancestral del agua en la Vega Baja.</p></li>
+ <li><strong data-i18n="alm_s5t">5. Teatro Cortés (5-8 min)</strong><p data-i18n="alm_s5d">Uno de los edificios culturales más queridos. Inaugurado a principios del s. XX (estilo neoclásico). Restaurado, mantiene programación activa de teatro y conciertos. Forma parte de la ruta del «Trazado de Larramendi».</p></li>
+ <li><strong data-i18n="alm_s6t">6. Capilla de la Calle España y Antiguo Hospital (final – 8-10 min)</strong><p data-i18n="alm_s6d">Pequeña capilla restaurada (estilo neogótico) junto al antiguo hospital (proyectado en 1929). Actualmente se usa para actos civiles, bodas y actividades culturales. Cierra bien el recorrido por los edificios más representativos del centro.</p></li>
+ </ol>
+ <div class="tips-box">
+ <h4 data-i18n="tips_heading">Consejos prácticos</h4>
+ <ul>
+ <li data-i18n="alm_tip1">Duración real: 50-70 minutos caminando con paradas para fotos y lectura de placas.</li>
+ <li data-i18n="alm_tip2">Mejor momento: mañana o final de tarde (menos calor). Los sábados hay mercadillo semanal alrededor de la plaza.</li>
+ <li data-i18n="alm_tip3">Extra opcional: Museo del Terremoto (Calle de la Reina, 33). Experiencia inmersiva de unos 45 min en una de las casas originales de la reconstrucción de 1829. Requiere reserva previa (de pago).</li>
+ <li data-i18n="alm_tip4">Consulta rutas guiadas del ayuntamiento en la Oficina de Turismo (Plaza de la Constitución) o en turismoalmoradi.com.</li>
+ </ul>
+ </div>
+ </div>
+ </div>
+
+ </div>
+ </section>
+
+ <!-- EVENTOS -->
+ <section class="events" id="eventos">
+ <div class="container">
+ <div class="section-title">
+ <h2 data-i18n="events_title">Próximas rutas guiadas</h2>
+ <p data-i18n="events_sub">Rutas y eventos por la comarca</p>
+ </div>
+ <div class="events-grid">
+ <div class="event-card">
+ <span class="event-date">4 Octubre</span>
+ <h4 data-i18n="ev1_t">GR-92 Guardamar → Torrevieja</h4>
+ <p data-i18n="ev1_d">15 km de costa, dificultad baja-media. Incluye guía, avituallamiento y transporte. Plazas limitadas a 100 personas.</p>
+ </div>
+ <div class="event-card">
+ <span class="event-date">8 Noviembre</span>
+ <h4 data-i18n="ev2_t">GR-92 Torrevieja → Pilar de la Horadada</h4>
+ <p data-i18n="ev2_d">Segunda etapa del Sendero del Mediterráneo por el litoral de Torrevieja, Orihuela Costa y Pilar de la Horadada.</p>
+ </div>
+ <div class="event-card">
+ <span class="event-date">Todo el año</span>
+ <h4 data-i18n="ev3_t">Rutas Parque Natural Torrevieja</h4>
+ <p data-i18n="ev3_d">Visitas guiadas al Parque Natural de las Lagunas de La Mata y Torrevieja y al Molino del Agua (reserva previa).</p>
+ </div>
+ </div>
+ </div>
+ </section>
+
+ <!-- CONSEJOS -->
+ <section id="consejos">
+ <div class="container">
+ <div class="section-title">
+ <h2 data-i18n="tips_title">Consejos para disfrutar de los tours</h2>
+ </div>
+ <div class="tips-grid">
+ <div class="tip-card">
+ <div class="icon">👟</div>
+ <h4 data-i18n="tipcard1_t">Calzado cómodo</h4>
+ <p data-i18n="tipcard1_d">Muchas rutas son a pie. Lleva zapatillas o botas de trekking.</p>
+ </div>
+ <div class="tip-card">
+ <div class="icon">💧</div>
+ <h4 data-i18n="tipcard2_t">Hidratación</h4>
+ <p data-i18n="tipcard2_d">Especialmente en verano. Lleva siempre agua y protección solar.</p>
+ </div>
+ <div class="tip-card">
+ <div class="icon">📱</div>
+ <h4 data-i18n="tipcard3_t">Reserva tu itinerario</h4>
+ <p data-i18n="tipcard3_d">Elige un pueblo y desbloquea su itinerario completo.</p>
+ </div>
+ <div class="tip-card">
+ <div class="icon">💶</div>
+ <h4 data-i18n="tipcard4_t">Itinerarios digitales</h4>
+ <p data-i18n="tipcard4_d">Accede a itinerarios detallados paso a paso tras el pago.</p>
+ </div>
+ </div>
+ </div>
+ </section>
+
+ <!-- FOOTER -->
+ <footer id="contacto">
+ <div class="footer-content">
+ <div>
+ <h4 data-i18n="footer_brand">VegaBaja Tours</h4>
+ <p><span data-i18n="footer_tagline">Tu guía para descubrir los tesoros de la Vega Baja del Segura.</span></p>
+ </div>
+ <div>
+ <h4 data-i18n="footer_links">Enlaces útiles</h4>
+ <a href="https://www..com" target="_blank"></a>
+ <a href="https://www.comunitatvalenciana.com" target="_blank">Turismo Comunitat Valenciana</a>
+ <a href="#"><span data-i18n="footer_offices">Oficinas de turismo</span></a>
+ </div>
+ <div>
+ <h4 data-i18n="footer_towns">Pueblos</h4>
+ <a href="#pueblos">Orihuela</a>
+ <a href="#pueblos">Torrevieja</a>
+ <a href="#pueblos">Guardamar</a>
+ <a href="#pueblos">Almoradí</a>
+ <a href="#pueblos">Callosa de Segura</a>
+ </div>
+ <div>
+ <h4 data-i18n="footer_contact">Contacto</h4>
+ <p>info@vegabajafreetours.es</p>
+ <p>+34 600 000 000</p>
+ </div>
+ </div>
+ <div class="copyright">
+ © 2026 VegaBaja Tours · Hecho con ❤️ en la Vega Baja del Segura
+ </div>
+ </footer>
+
+
+ <!-- PAYMENT MODAL -->
+ <div class="modal-overlay" id="payment-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+ <div class="modal">
+ <button type="button" class="modal-close" id="modal-close" aria-label="Cerrar">&times;</button>
+ <div id="modal-pay-view">
+        <h3 id="modal-title" data-i18n="modal_title">Desbloquear itinerario</h3>
+        <p id="modal-town-name" data-i18n="modal_desc">Accede al itinerario completo paso a paso de este tour.</p>
+        <div class="price">2,99 € <span data-i18n="modal_per">/ itinerario</span></div>
+
+        <div id="card-form" class="payment-form">
+          <div style="background:#f0f7f7;border-radius:12px;padding:1rem;margin-bottom:1rem;text-align:left;">
+            <p style="margin:0 0 0.5rem;font-weight:600;color:#0d7377;" data-i18n="redsys_title">Pago seguro con tarjeta (Redsys)</p>
+            <p style="margin:0;font-size:0.9rem;color:#555;" data-i18n="redsys_hint">Serás redirigido a la pasarela bancaria Redsys para pagar <strong>2,99 €</strong> con tarjeta de crédito o débito de forma segura.</p>
+          </div>
+          <label for="card-name" data-i18n="label_name">Nombre del pagador</label>
+          <input type="text" id="card-name" placeholder="Tu nombre" autocomplete="name">
+          <p style="font-size:0.8rem;color:#888;margin-top:0.5rem;" data-i18n="redsys_note">No introducimos datos de tarjeta en esta web: se introducen solo en Redsys.</p>
+        </div>
+
+        <div class="modal-actions">
+          <button type="button" class="btn btn-outline" id="modal-cancel" data-i18n="btn_cancel">Cancelar</button>
+          <button type="button" class="btn" id="modal-pay" data-i18n="btn_pay">Pagar 2,99 € con tarjeta</button>
+        </div>
+        <p style="font-size:0.8rem;color:#666;margin-top:1rem;" data-i18n="pay_disclaimer">Pago seguro con tarjeta a través de Redsys.</p>
+      </div>
+      <div id="modal-success-view" style="display:none;">
+ <div style="font-size:3rem;margin-bottom:0.5rem;">✅</div>
+ <h3 data-i18n="success_title">¡Pago realizado!</h3>
+ <p data-i18n="success_msg">El itinerario ha sido desbloqueado. Ya puedes consultarlo.</p>
+ <button type="button" class="btn" id="modal-go" style="margin-top:1rem;width:100%;" data-i18n="btn_view">Ver itinerario</button>
+ </div>
+ </div>
+ </div>
+
+ <script>
+ function toggleMenu() {
+ document.getElementById('nav-menu').classList.toggle('active');
+ }
+
+ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+ anchor.addEventListener('click', function (e) {
+ const href = this.getAttribute('href');
+ if (!href || href === '#') return;
+ e.preventDefault();
+ const target = document.querySelector(href);
+ if (target) {
+ target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+ document.getElementById('nav-menu').classList.remove('active');
+ }
+ });
+ });
+
+ // ========== i18n ==========
+ const translations = {
+ es: {
+ nav_home: 'Inicio', nav_towns: 'Pueblos', nav_events: 'Eventos', nav_tips: 'Consejos', nav_contact: 'Contacto',
+ hero_title: 'Tours por la Vega Baja del Segura',
+ hero_sub: 'Descubre el patrimonio, la naturaleza y la auténtica esencia de Orihuela, Torrevieja, Guardamar y los pueblos más bonitos de la comarca.',
+ hero_btn: 'Explorar pueblos',
+ about_title: 'La Vega Baja te espera',
+ about_sub: 'Una comarca de contrastes entre huerta, costa, lagunas y monumentos históricos',
+ towns_title: 'Principales pueblos con tours',
+ towns_sub: 'Rutas a pie de aproximadamente 1 hora. Elige un destino y sigue el itinerario detallado',
+ card_orihuela: 'Casco histórico monumental, catedral, Miguel Hernández y «el Escorial del Levante».',
+ card_torrevieja: 'Paseo marítimo, Bella Lola, Eras de la Sal y el fuerte vínculo con el mar y la sal.',
+ card_guardamar: 'Castillo, dunas, pinada del Ingeniero Mira y restos fenicios e islámicos.',
+ card_almoradi: 'Plaza de la Constitución, trazado de Larramendi tras el terremoto de 1829 y patrimonio local.',
+ btn_locked: 'Ver itinerario completo',
+ btn_unlocked: 'Ver itinerario completo',
+ badge_unlocked: '✓ Desbloqueado',
+        audio_title: '🎧 Guía de audio del itinerario',
+        audio_hint: 'Escucha la explicación paso a paso mientras recorres la ruta.',
+ events_title: 'Próximas rutas guiadas',
+ events_sub: 'Rutas y eventos por la comarca',
+ tips_title: 'Consejos para disfrutar de los tours',
+ footer_tagline: 'Tu guía para descubrir los tesoros de la Vega Baja del Segura.',
+ modal_title: 'Desbloquear itinerario',
+ modal_desc: 'Accede al itinerario completo paso a paso de este tour.',
+ modal_desc_town: 'Accede al itinerario completo paso a paso de {town}.',
+ modal_per: '/ itinerario',
+        
+        
+        
+        redsys_title: 'Pago seguro con tarjeta (Redsys)',
+        redsys_hint: 'Serás redirigido a la pasarela bancaria Redsys para pagar 2,99 € con tarjeta de crédito o débito de forma segura.',
+        redsys_note: 'No introducimos datos de tarjeta en esta web: se introducen solo en Redsys.',
+        redsys_error: 'No se pudo iniciar el pago. Inténtalo de nuevo.',
+        pay_disclaimer: 'Pago seguro con tarjeta a través de Redsys.',
+
+        alert_name: 'Indica tu nombre para identificar el pago.',
+ label_name: 'Nombre del pagador',
+ label_number: 'Número de tarjeta (opcional)',
+ label_exp: 'Caducidad',
+ label_cvc: 'CVC',
+ 
+ 
+ btn_cancel: 'Cancelar',
+ btn_pay: 'Pagar 2,99 € con tarjeta',
+ 
+ pay_disclaimer: 'Pago seguro con tarjeta a través de Redsys.',
+ success_title: '¡Pago realizado!',
+ success_msg: 'El itinerario ha sido desbloqueado. Ya puedes consultarlo.',
+ btn_view: 'Ver itinerario',
+ processing: 'Procesando...',
+ alert_card: 'Por favor, completa todos los datos de la tarjeta.',
+
+ start_label: 'Punto de inicio:',
+ tips_heading: 'Consejos prácticos',
+ about_h3: 'Tu tierra y la mía',
+ about_p1: 'La Vega Baja del Segura, en el sur de Alicante, es una tierra de ricos contrastes: la huerta más fértil de Europa, lagunas rosadas, dunas de pinares, castillos y un patrimonio monumental excepcional.',
+ about_p2: 'Descubre rutas e itinerarios detallados por los pueblos más emblemáticos de la comarca.',
+ feat1: 'Patrimonio histórico', feat2: 'Parques naturales', feat3: 'Costa y dunas', feat4: 'Huerta y gastronomía',
+ tipcard1_t: 'Calzado cómodo', tipcard1_d: 'Muchas rutas son a pie. Lleva zapatillas o botas de trekking.',
+ tipcard2_t: 'Hidratación', tipcard2_d: 'Especialmente en verano. Lleva siempre agua y protección solar.',
+ tipcard3_t: 'Reserva tu itinerario', tipcard3_d: 'Elige un pueblo y desbloquea su itinerario completo.',
+ tipcard4_t: 'Itinerarios digitales', tipcard4_d: 'Accede a itinerarios detallados paso a paso tras el pago.',
+ footer_brand: 'VegaBaja Tours', footer_links: 'Enlaces útiles', footer_towns: 'Pueblos', footer_contact: 'Contacto', footer_offices: 'Oficinas de turismo',
+ ev1_t: 'GR-92 Guardamar → Torrevieja',
+ ev1_d: '15 km de costa, dificultad baja-media. Incluye guía, avituallamiento y transporte. Plazas limitadas a 100 personas.',
+ ev2_t: 'GR-92 Torrevieja → Pilar de la Horadada',
+ ev2_d: 'Segunda etapa del Sendero del Mediterráneo por el litoral de Torrevieja, Orihuela Costa y Pilar de la Horadada.',
+ ev3_t: 'Rutas Parque Natural Torrevieja',
+ ev3_d: 'Visitas guiadas al Parque Natural de las Lagunas de La Mata y Torrevieja y al Molino del Agua (reserva previa).',
+ ori_name: 'Orihuela',
+ ori_meta: 'Tour ~1 hora · 2–2,5 km · Dificultad fácil',
+ ori_intro: 'Capital histórica de la Vega Baja. Casco antiguo declarado Conjunto Histórico-Artístico. Ideal para exteriores; si entras en monumentos suma tiempo y pequeña entrada (≈2 €).',
+ ori_start: 'Colegio Diocesano de Santo Domingo (al este del casco antiguo). Aparcamiento cerca (Paseo de Calvo Sotelo / Glorieta).',
+ ori_s1t: '1. Colegio Diocesano de Santo Domingo (5-7 min)',
+ ori_s1d: 'El edificio más imponente de Orihuela. Convento dominico y antigua universidad del siglo XVI (renacentista, manierista y barroco). Conocido como «el Escorial del Levante» por su enorme tamaño. Observa la fachada principal y el arco de acceso.',
+ ori_s2t: '2. Casa-Museo de Miguel Hernández (3-5 min)',
+ ori_s2d: 'A pocos pasos del colegio. Casa donde vivió el poeta oriolano entre 1914 y 1934. Desde fuera se aprecia el ambiente sencillo que inspiró gran parte de su obra. Entrada libre si está abierta.',
+ ori_s3t: '3. Calles históricas hacia el centro (5-7 min)',
+ ori_s3d: 'Sigue hacia el oeste por Calle de la Cruz, Calle San Juan o similares. Pasarás cerca de la Casa Natal de Miguel Hernández y del Museo de Semana Santa (antigua Iglesia de la Merced).',
+ ori_s4t: '4. Catedral del Salvador y Santa María + Palacio Episcopal (10-12 min)',
+ ori_s4d: 'El corazón monumental. La Catedral (siglos XIII-XVIII) se construyó sobre una antigua mezquita; destaca su portada gótica. Justo al lado el Palacio Episcopal (s. XVIII), sede del Museo Diocesano de Arte Sacro. La plaza del Salvador es ideal para fotos.',
+ ori_s5t: '5. Iglesia de Santas Justa y Rufina + Museo de la Muralla (8-10 min)',
+ ori_s5d: 'Iglesia con torre cuadrada característica y elementos de varios estilos (incluidos restos árabes). Muy cerca el Museo de la Muralla, con restos de murallas medievales y casas árabes del s. XII (entrada según horario).',
+ ori_s6t: '6. Iglesia de Santiago Apóstol y Santuario de Monserrate (8-10 min)',
+ ori_s6d: 'Iglesia de Santiago (s. XIV, gótica, vínculo con los Reyes Católicos). Santuario de la Virgen de Monserrate (patrona de Orihuela), edificio barroco del s. XVII-XVIII. Uno de los lugares más queridos por los oriolanos.',
+ ori_s7t: '7. Final: Plaza de Santiago o Glorieta Gabriel Miró',
+ ori_s7d: 'Desde aquí tienes cerca el río Segura. Puedes continuar paseando o buscar un café.',
+ ori_tip1: 'Mejor horario: mañana (10:00-13:00) o tarde suave para evitar el calor.',
+ ori_tip2: 'Lleva agua, especialmente en verano.',
+ ori_tip3: 'Extra opcional: subida al Castillo de Orihuela (Monte San Miguel) o el Palmeral (+30-45 min).',
+ ori_tip4: 'Oficina de Turismo: Plaza de la Soledad, 5.',
+ tor_name: 'Torrevieja',
+ tor_meta: 'Tour ~1 hora · 2,5–3 km · Todo llano y peatonal',
+ tor_intro: 'Ruta centrada en el casco urbano y el paseo marítimo. Empieza y termina en la zona playa/puerto. Ideal a primera hora de la mañana o al atardecer.',
+ tor_start: 'Paseo Marítimo Juan Aparicio, frente a Playa del Cura.',
+ tor_s1t: '1. Paseo Marítimo Juan Aparicio (0-10 min)',
+ tor_s1d: 'El paseo más animado y emblemático. Remodelado en 1999 por la arquitecta Carme Pinós. Une la playa con el puerto. Terrazas, heladerías y vistas abiertas al Mediterráneo.',
+ tor_s2t: '2. Escultura «La Bella Lola» (10-15 min)',
+ tor_s2d: 'Una de las imágenes más fotografiadas de Torrevieja. Representa a una mujer sentada mirando al mar, esperando el regreso de su marido marinero. Simboliza la tradición marinera de la ciudad.',
+ tor_s3t: '3. Monumento al Hombre del Mar y Dique de Levante (15-25 min)',
+ tor_s3d: 'Homenaje a marineros y pescadores. Desde aquí puedes asomarte al Dique de Levante (espigón de más de 1,5 km). Basta con caminar un tramo para disfrutar de las vistas y las pérgolas.',
+ tor_s4t: '4. Paseo de la Libertad («los hippies») y Plaza Waldo Calero (25-35 min)',
+ tor_s4d: 'Paseo conocido por los puestos de artesanía y souvenirs. Llegarás a la Plaza Waldo Calero, con bancos de cerámica inspirados en las olas y una fuente. Rincón fresco y agradable.',
+ tor_s5t: '5. Sociedad Cultural Casino de Torrevieja (35-40 min)',
+ tor_s5d: 'Edificio modernista de finales del s. XIX (fundado en 1867). Uno de los más representativos de la ciudad. Hoy es sociedad cultural y café-restaurante. Puedes entrar a ver el salón principal y la sala neo-nazarí.',
+ tor_s6t: '6. Paseo Vista Alegre + Monumentos a los Músicos y al Coralista (40-50 min)',
+ tor_s6d: 'Homenaje a la fuerte tradición coral y al Certamen Internacional de Habaneras y Polifonía (Interés Turístico Internacional). El Monumento al Coralista es de los más fotografiados.',
+ tor_s7t: '7. Conjunto Histórico Eras de la Sal (50-55 min)',
+ tor_s7d: 'Antiguo complejo salinero del s. XVIII (1777-1958). Excelente ejemplo de arquitectura industrial ligada a la historia salinera de Torrevieja, una de las mayores productoras de sal marina de Europa.',
+ tor_s8t: '8. Museo del Mar y de la Sal (opcional, 55-60 min)',
+ tor_s8d: 'Explica la relación de Torrevieja con el mar y la sal mediante objetos, maquetas y fotografías. Consulta horarios de entrada (consulta horarios).',
+ tor_tip1: 'Todo el recorrido es llano y accesible.',
+ tor_tip2: 'Lleva agua y protección solar (en verano hace bastante calor).',
+ tor_tip3: 'Extra: Iglesia Arciprestal de la Inmaculada Concepción (Plaza de la Constitución).',
+ tor_tip4: 'La Laguna Rosa y el Parque Natural merecen visita aparte (coche/autobús, 10-15 min).',
+ gua_name: 'Guardamar del Segura',
+ gua_meta: 'Tour ~1 hora · 1,5–2 km · Fácil (pequeña subida al castillo)',
+ gua_intro: 'Combina historia milenaria, vistas y el inicio de la pinada/dunas. El recorrido exterior es libre; el museo puede tener entrada según horario.',
+ gua_start: 'Museo Arqueológico de Guardamar (MAG) – Casa de Cultura (Carrer Colom / zona central).',
+ gua_s1t: '1. Museo Arqueológico de Guardamar – Casa de Cultura (5-8 min)',
+ gua_s1d: 'Restos de las culturas que habitaron el municipio (fenicia, íbera, romana, islámica y cristiana). Destaca la réplica de la Dama de Guardamar (original en el MARQ de Alicante). Punto de partida de las rutas oficiales «Memoria de Arena».',
+ gua_s2t: '2. Castillo de Guardamar (subida suave + 10-12 min)',
+ gua_s2d: 'Cerro del Castell. Restos de la antigua villa amurallada fundada por Alfonso X el Sabio en 1271. Ocupación desde el s. VIII a.C. Destruido en gran parte por los terremotos de 1829. Mejores vistas del casco urbano, desembocadura del Segura y dunas. Paneles con códigos QR y restos de murallas (Baluarte de la Pólvora).',
+ gua_s3t: '3. Casco urbano, Plaza de la Constitución e Iglesia de San Jaime (10 min)',
+ gua_s3d: 'Tras el terremoto de 1829 se rediseñó el pueblo con trazado más abierto (proyecto de José Agustín de Larramendi). Cerca está la Casa-Museo del Ingeniero Mira, dedicada a Francisco Mira i Botella, que a principios del s. XX fijó las dunas plantando cientos de miles de pinos.',
+ gua_s4t: '4. Paseo del Ingeniero Mira y Parque Alfonso XIII – La Pinada (10-12 min)',
+ gua_s4d: 'Paseo histórico (abierto en 1903) que conecta el centro con el mar a través de las dunas. Sistema dunar de unas 800 hectáreas, uno de los mayores ecosistemas litorales del Mediterráneo español. Pinos piñoneros, eucaliptos, palmeras y cipreses plantados para frenar el avance de la arena.',
+ gua_s5t: '5. Yacimientos Rábita Califal y La Fonteta (opcional +5-10 min)',
+ gua_s5d: 'Rábita Califal: monasterio islámico del s. X, único de su tipo casi completo en la península. La Fonteta: ciudad fenicia de los s. VIII-VI a.C. Ambos entre la pinada, cerca del mar. Hay paneles informativos.',
+ gua_s6t: '6. Final: Parque Reina Sofía o Playa Centro / Paseo marítimo',
+ gua_s6d: 'Espacio verde con sombra junto al mar. La Playa Centro tiene bandera azul, servicios y terrazas. Desde aquí puedes quedarte en la playa o volver por el mismo camino.',
+ gua_tip1: 'Mejor momento: mañana o tarde para evitar el calor del mediodía.',
+ gua_tip2: 'Lleva agua, calzado cómodo y protección solar.',
+ gua_tip3: 'Códigos QR en varios puntos de las rutas «Memoria de Arena» (audioguías).',
+ gua_tip4: 'Versión guiada completa (Castillo + pinada + Rábita/Fonteta): viernes en inglés y sábados en español (consulta guardamarturismo.com).',
+ alm_name: 'Almoradí',
+ alm_meta: 'Tour ~1 hora · 1,5–2 km · Muy fácil y plano',
+ alm_intro: 'Recorrido por el centro histórico. Ideal para hacerlo a tu ritmo. Tras el terremoto de 1829, el ingeniero José Agustín de Larramendi rediseñó el pueblo con calles anchas y manzanas regulares (el famoso «trazado de Larramendi»).',
+ alm_start: 'Plaza de la Constitución (punto de encuentro habitual de las rutas oficiales del ayuntamiento).',
+ alm_s1t: '1. Plaza de la Constitución (inicio – 10 min)',
+ alm_s1d: 'Centro neurálgico y «salón de estar» del pueblo. Aquí se concentran el Ayuntamiento, la iglesia y los grandes ficus centenarios que dan sombra. Mejor lugar para situarte y sentir el ambiente local.',
+ alm_s2t: '2. Iglesia Parroquial de San Andrés (5-10 min)',
+ alm_s2d: 'Justo en la plaza. Edificada entre 1829 y 1861 tras la destrucción del templo anterior por el gran terremoto. Estilo neoclásico, con dos torres laterales y el Sagrado Corazón en lo alto. Edificio más emblemático del municipio y símbolo de la reconstrucción.',
+ alm_s3t: '3. Casino de Almoradí (Calle Tomás Capdepón – 5-8 min)',
+ alm_s3d: 'A pocos pasos de la plaza. Inaugurado en 1882, gran referente social y cultural de los s. XIX y XX. Durante décadas fue el lugar de reuniones, bailes y actos de la burguesía local. Hoy sigue acogiendo exposiciones y actividades.',
+ alm_s4t: '4. Juzgado de Aguas del Azud de Alfeitamí (Calle Tomás Capdepón, 23 – 5 min)',
+ alm_s4d: 'Institución histórica clave en una zona de huerta. Se encarga de la gestión y distribución del agua de riego (acequias y azarbes). Refleja la importancia ancestral del agua en la Vega Baja.',
+ alm_s5t: '5. Teatro Cortés (5-8 min)',
+ alm_s5d: 'Uno de los edificios culturales más queridos. Inaugurado a principios del s. XX (estilo neoclásico). Restaurado, mantiene programación activa de teatro y conciertos. Forma parte de la ruta del «Trazado de Larramendi».',
+ alm_s6t: '6. Capilla de la Calle España y Antiguo Hospital (final – 8-10 min)',
+ alm_s6d: 'Pequeña capilla restaurada (estilo neogótico) junto al antiguo hospital (proyectado en 1929). Actualmente se usa para actos civiles, bodas y actividades culturales. Cierra bien el recorrido por los edificios más representativos del centro.',
+ alm_tip1: 'Duración real: 50-70 minutos caminando con paradas para fotos y lectura de placas.',
+ alm_tip2: 'Mejor momento: mañana o final de tarde (menos calor). Los sábados hay mercadillo semanal alrededor de la plaza.',
+ alm_tip3: 'Extra opcional: Museo del Terremoto (Calle de la Reina, 33). Experiencia inmersiva de unos 45 min en una de las casas originales de la reconstrucción de 1829. Requiere reserva previa (de pago).',
+ alm_tip4: 'Consulta rutas guiadas del ayuntamiento en la Oficina de Turismo (Plaza de la Constitución) o en turismoalmoradi.com.',
+
+ towns: { orihuela: 'Orihuela', torrevieja: 'Torrevieja', guardamar: 'Guardamar del Segura', almoradi: 'Almoradí' }
+ },
+ en: {
+ nav_home: 'Home', nav_towns: 'Towns', nav_events: 'Events', nav_tips: 'Tips', nav_contact: 'Contact',
+ hero_title: 'Tours around the Vega Baja del Segura',
+ hero_sub: 'Discover the heritage, nature and authentic essence of Orihuela, Torrevieja, Guardamar and the most beautiful towns in the region.',
+ hero_btn: 'Explore towns',
+ about_title: 'Vega Baja awaits you',
+ about_sub: 'A region of contrasts between orchards, coast, lagoons and historic monuments',
+ towns_title: 'Main towns with tours',
+ towns_sub: 'Walking routes of about 1 hour. Choose a destination and follow the detailed itinerary',
+ card_orihuela: 'Monumental historic centre, cathedral, Miguel Hernández and the “Escorial of the Levante”.',
+ card_torrevieja: 'Seafront promenade, Bella Lola, Eras de la Sal and a strong link to the sea and salt.',
+ card_guardamar: 'Castle, dunes, Engineer Mira pine forest and Phoenician and Islamic remains.',
+ card_almoradi: 'Plaza de la Constitución, Larramendi layout after the 1829 earthquake and local heritage.',
+ btn_locked: 'View full itinerary',
+ btn_unlocked: 'View full itinerary',
+ badge_unlocked: '✓ Unlocked',
+        audio_title: '🎧 Itinerary audio guide',
+        audio_hint: 'Listen to the step-by-step explanation while you walk the route.',
+ events_title: 'Upcoming guided routes',
+ events_sub: 'Routes and events across the region',
+ tips_title: 'Tips to enjoy the tours',
+ footer_tagline: 'Your guide to discover the treasures of the Vega Baja del Segura.',
+ modal_title: 'Unlock itinerary',
+ modal_desc: 'Access the complete step-by-step itinerary of this tour.',
+ modal_desc_town: 'Access the complete step-by-step itinerary of {town}.',
+ modal_per: '/ itinerary',
+        
+        
+        
+        redsys_title: 'Secure card payment (Redsys)',
+        redsys_hint: 'You will be redirected to the Redsys bank gateway to pay €2.99 by credit or debit card securely.',
+        redsys_note: 'We do not collect card data on this site: you enter them only on Redsys.',
+        redsys_error: 'Could not start payment. Please try again.',
+        pay_disclaimer: 'Secure card payment via Redsys.',
+
+        alert_name: 'Please enter your name to identify the payment.',
+ label_name: 'Payer name',
+ label_number: 'Card number (optional)',
+ label_exp: 'Expiry',
+ label_cvc: 'CVC',
+ 
+ 
+ btn_cancel: 'Cancel',
+ btn_pay: 'Pay €2.99 by card',
+ 
+ pay_disclaimer: 'After paying to the account shown, confirm to unlock the itinerary.',
+ success_title: 'Payment successful!',
+ success_msg: 'The itinerary has been unlocked. You can now view it.',
+ btn_view: 'View itinerary',
+ processing: 'Processing...',
+ alert_card: 'Please fill in all card details.',
+
+ start_label: 'Starting point:',
+ tips_heading: 'Practical tips',
+ about_h3: 'Your land and mine',
+ about_p1: 'The Vega Baja del Segura, in southern Alicante, is a land of rich contrasts: the most fertile orchard in Europe, pink lagoons, pine-covered dunes, castles and exceptional monumental heritage.',
+ about_p2: 'Discover detailed routes and itineraries through the most emblematic towns in the region.',
+ feat1: 'Historical heritage', feat2: 'Natural parks', feat3: 'Coast and dunes', feat4: 'Orchard and gastronomy',
+ tipcard1_t: 'Comfortable shoes', tipcard1_d: 'Many routes are on foot. Wear trainers or hiking boots.',
+ tipcard2_t: 'Hydration', tipcard2_d: 'Especially in summer. Always carry water and sun protection.',
+ tipcard3_t: 'Book your itinerary', tipcard3_d: 'Choose a town and unlock its full itinerary.',
+ tipcard4_t: 'Digital itineraries', tipcard4_d: 'Access detailed step-by-step itineraries after payment.',
+ footer_brand: 'VegaBaja Tours', footer_links: 'Useful links', footer_towns: 'Towns', footer_contact: 'Contact', footer_offices: 'Tourist offices',
+ ev1_t: 'GR-92 Guardamar → Torrevieja',
+ ev1_d: '15 km of coast, easy-medium difficulty. Includes guide, refreshments and transport. Limited to 100 people.',
+ ev2_t: 'GR-92 Torrevieja → Pilar de la Horadada',
+ ev2_d: 'Second stage of the Mediterranean Path along the coast of Torrevieja, Orihuela Costa and Pilar de la Horadada.',
+ ev3_t: 'Torrevieja Natural Park routes',
+ ev3_d: 'Guided visits to the Natural Park of the Lagoons of La Mata and Torrevieja and the Water Mill (prior booking).',
+ ori_name: 'Orihuela',
+ ori_meta: 'Tour ~1 hour · 2–2.5 km · Easy difficulty',
+ ori_intro: 'Historic capital of the Vega Baja. Old town declared a Historic-Artistic Site. Ideal outdoors; entering monuments adds time and a small fee (≈€2).',
+ ori_start: 'Diocesan College of Santo Domingo (east of the old town). Parking nearby (Paseo de Calvo Sotelo / Glorieta).',
+ ori_s1t: '1. Diocesan College of Santo Domingo (5-7 min)',
+ ori_s1d: 'The most imposing building in Orihuela. Dominican convent and former 16th-century university (Renaissance, Mannerist and Baroque). Known as the “Escorial of the Levante” for its huge size. Note the main façade and entrance arch.',
+ ori_s2t: '2. Miguel Hernández House-Museum (3-5 min)',
+ ori_s2d: 'A few steps from the college. House where the Orihuela poet lived between 1914 and 1934. From outside you sense the simple atmosphere that inspired much of his work. Entry if open.',
+ ori_s3t: '3. Historic streets towards the centre (5-7 min)',
+ ori_s3d: 'Head west along Calle de la Cruz, Calle San Juan or similar. You will pass near Miguel Hernández’s birthplace and the Holy Week Museum (former Church of La Merced).',
+ ori_s4t: '4. Cathedral of El Salvador and Santa María + Episcopal Palace (10-12 min)',
+ ori_s4d: 'The monumental heart. The Cathedral (13th–18th c.) was built over a former mosque; note its Gothic portal. Next to it the Episcopal Palace (18th c.), home to the Diocesan Sacred Art Museum. Plaza del Salvador is ideal for photos.',
+ ori_s5t: '5. Church of Saints Justa and Rufina + Wall Museum (8-10 min)',
+ ori_s5d: 'Church with a characteristic square tower and elements of several styles (including Arab remains). Nearby the Wall Museum, with medieval walls and 12th-century Arab houses (check opening hours).',
+ ori_s6t: '6. Church of Santiago Apóstol and Sanctuary of Monserrate (8-10 min)',
+ ori_s6d: 'Church of Santiago (14th c., Gothic, linked to the Catholic Monarchs). Sanctuary of Our Lady of Monserrate (patron of Orihuela), Baroque building of the 17th–18th c. One of the most beloved places for locals.',
+ ori_s7t: '7. End: Plaza de Santiago or Glorieta Gabriel Miró',
+ ori_s7d: 'From here the Segura river is nearby. You can keep walking or look for a café.',
+ ori_tip1: 'Best time: morning (10:00-13:00) or mild afternoon to avoid the heat.',
+ ori_tip2: 'Bring water, especially in summer.',
+ ori_tip3: 'Optional extra: climb to Orihuela Castle (Monte San Miguel) or the Palm Grove (+30-45 min).',
+ ori_tip4: 'Tourist Office: Plaza de la Soledad, 5.',
+ tor_name: 'Torrevieja',
+ tor_meta: 'Tour ~1 hour · 2.5–3 km · Fully flat and pedestrian',
+ tor_intro: 'Route focused on the urban centre and the seafront promenade. Starts and ends in the beach/port area. Ideal early morning or at sunset.',
+ tor_start: 'Juan Aparicio Seafront Promenade, opposite Playa del Cura.',
+ tor_s1t: '1. Juan Aparicio Seafront Promenade (0-10 min)',
+ tor_s1d: 'The liveliest and most emblematic promenade. Remodelled in 1999 by architect Carme Pinós. Links the beach to the port. Terraces, ice-cream parlours and open views of the Mediterranean.',
+ tor_s2t: '2. “La Bella Lola” sculpture (10-15 min)',
+ tor_s2d: 'One of the most photographed images of Torrevieja. Depicts a woman sitting looking out to sea, waiting for her sailor husband’s return. Symbolises the city’s seafaring tradition.',
+ tor_s3t: '3. Monument to the Man of the Sea and Levante Breakwater (15-25 min)',
+ tor_s3d: 'Tribute to sailors and fishermen. From here you can look out over the Levante Breakwater (over 1.5 km long). A short walk is enough to enjoy the views and pergolas.',
+ tor_s4t: '4. Paseo de la Libertad (“the hippies”) and Plaza Waldo Calero (25-35 min)',
+ tor_s4d: 'Promenade known for craft and souvenir stalls. You reach Plaza Waldo Calero, with ceramic benches inspired by sea waves and a fountain. A cool, pleasant corner.',
+ tor_s5t: '5. Torrevieja Cultural Society Casino (35-40 min)',
+ tor_s5d: 'Late 19th-century Modernist building (founded 1867). One of the city’s most representative. Today a cultural society and café-restaurant. You can go in to see the main hall and neo-Nasrid room.',
+ tor_s6t: '6. Paseo Vista Alegre + Monuments to the Musicians and the Choral Singer (40-50 min)',
+ tor_s6d: 'Tribute to the strong choral tradition and the International Contest of Habaneras and Polyphony (International Tourist Interest). The Monument to the Choral Singer is among the most photographed.',
+ tor_s7t: '7. Historic Salt Works complex – Eras de la Sal (50-55 min)',
+ tor_s7d: 'Former 18th-century salt complex (1777–1958). Excellent example of industrial architecture linked to Torrevieja’s salt history, once one of Europe’s largest sea-salt producers.',
+ tor_s8t: '8. Sea and Salt Museum (optional, 55-60 min)',
+ tor_s8d: 'Explains Torrevieja’s relationship with the sea and salt through objects, models and photographs. Check opening hours (check opening hours).',
+ tor_tip1: 'The whole route is flat and accessible.',
+ tor_tip2: 'Bring water and sun protection (it gets quite hot in summer).',
+ tor_tip3: 'Extra: Archpriestal Church of the Immaculate Conception (Plaza de la Constitución).',
+ tor_tip4: 'The Pink Lagoon and Natural Park deserve a separate visit (car/bus, 10-15 min).',
+ gua_name: 'Guardamar del Segura',
+ gua_meta: 'Tour ~1 hour · 1.5–2 km · Easy (gentle climb to the castle)',
+ gua_intro: 'Combines millennia of history, views and the start of the pine forest/dunes. The outdoor route is open; the museum may charge depending on hours.',
+ gua_start: 'Guardamar Archaeological Museum (MAG) – House of Culture (Carrer Colom / central area).',
+ gua_s1t: '1. Guardamar Archaeological Museum – House of Culture (5-8 min)',
+ gua_s1d: 'Remains of the cultures that lived in the municipality (Phoenician, Iberian, Roman, Islamic and Christian). Highlights include the replica of the Lady of Guardamar (original in the MARQ of Alicante). Starting point of the official “Memory of Sand” routes.',
+ gua_s2t: '2. Guardamar Castle (gentle climb + 10-12 min)',
+ gua_s2d: 'Cerro del Castell. Remains of the old walled town founded by Alfonso X the Wise in 1271. Occupation since the 8th century BC. Largely destroyed by the 1829 earthquakes. Best views of the urban centre, Segura river mouth and dunes. QR panels and wall remains (Powder Bastion).',
+ gua_s3t: '3. Town centre, Plaza de la Constitución and Church of San Jaime (10 min)',
+ gua_s3d: 'After the 1829 earthquake the town was redesigned with a more open layout (project by José Agustín de Larramendi). Nearby is the Engineer Mira House-Museum, dedicated to Francisco Mira i Botella, who in the early 20th century fixed the dunes by planting hundreds of thousands of pines.',
+ gua_s4t: '4. Engineer Mira Promenade and Alfonso XIII Park – The Pine Forest (10-12 min)',
+ gua_s4d: 'Historic promenade (opened 1903) linking the centre to the sea through the dunes. Dune system of about 800 hectares, one of the largest coastal ecosystems in the Spanish Mediterranean. Stone pines, eucalyptus, palms and cypresses planted to stop the advancing sand.',
+ gua_s5t: '5. Rábita Califal and La Fonteta sites (optional +5-10 min)',
+ gua_s5d: 'Rábita Califal: 10th-century Islamic monastery, almost unique of its kind on the peninsula. La Fonteta: Phoenician city of the 8th–6th centuries BC. Both among the pine forest near the sea. Information panels available.',
+ gua_s6t: '6. End: Reina Sofía Park or Centro Beach / Seafront',
+ gua_s6d: 'Green space with shade by the sea. Centro Beach has a blue flag, services and terraces. From here you can stay on the beach or return the same way.',
+ gua_tip1: 'Best time: morning or afternoon to avoid midday heat.',
+ gua_tip2: 'Bring water, comfortable shoes and sun protection.',
+ gua_tip3: 'QR codes at several points on the “Memory of Sand” routes (audio guides).',
+ gua_tip4: 'Full official guided version (Castle + pine forest + Rábita/Fonteta): Fridays in English and Saturdays in Spanish (check guardamarturismo.com).',
+ alm_name: 'Almoradí',
+ alm_meta: 'Tour ~1 hour · 1.5–2 km · Very easy and flat',
+ alm_intro: 'Route through the historic centre. Ideal at your own pace. After the 1829 earthquake, engineer José Agustín de Larramendi redesigned the town with wide streets and regular blocks (the famous “Larramendi layout”).',
+ alm_start: 'Plaza de la Constitución (usual meeting point for the town hall’s official routes).',
+ alm_s1t: '1. Plaza de la Constitución (start – 10 min)',
+ alm_s1d: 'The town’s nerve centre and “living room”. Here you find the Town Hall, the church and the great century-old ficus trees that provide shade. Best place to get your bearings and feel the local atmosphere.',
+ alm_s2t: '2. Parish Church of San Andrés (5-10 min)',
+ alm_s2d: 'Right on the square. Built between 1829 and 1861 after the previous temple was destroyed by the great earthquake. Neoclassical style, with two side towers and the Sacred Heart on top. The municipality’s most emblematic building and symbol of reconstruction.',
+ alm_s3t: '3. Almoradí Casino (Calle Tomás Capdepón – 5-8 min)',
+ alm_s3d: 'A few steps from the square. Opened in 1882, major social and cultural reference of the 19th and 20th centuries. For decades the place for meetings, dances and events of the local bourgeoisie. Today it still hosts exhibitions and activities.',
+ alm_s4t: '4. Water Court of the Alfeitamí Weir (Calle Tomás Capdepón, 23 – 5 min)',
+ alm_s4d: 'Key historic institution in an orchard area. Manages and distributes irrigation water (ditches and channels). Reflects the ancestral importance of water in the Vega Baja.',
+ alm_s5t: '5. Cortés Theatre (5-8 min)',
+ alm_s5d: 'One of the most beloved cultural buildings. Opened in the early 20th century (Neoclassical style). Restored, it maintains an active programme of theatre and concerts. Part of the “Larramendi Layout” route.',
+ alm_s6t: '6. Chapel of Calle España and Former Hospital (end – 8-10 min)',
+ alm_s6d: 'Small restored chapel (Neo-Gothic style) next to the former hospital (designed in 1929). Now used for civil ceremonies, weddings and cultural activities. A fine close to the route through the most representative buildings of the centre.',
+ alm_tip1: 'Real duration: 50-70 minutes walking with stops for photos and reading plaques.',
+ alm_tip2: 'Best time: morning or late afternoon (less heat). On Saturdays there is a weekly market around the square.',
+ alm_tip3: 'Optional extra: Earthquake Museum (Calle de la Reina, 33). Immersive experience of about 45 min in one of the original reconstruction houses of 1829. Prior booking required (paid).',
+ alm_tip4: 'Check guided routes from the town hall at the Tourist Office (Plaza de la Constitución) or turismoalmoradi.com.',
+
+ towns: { orihuela: 'Orihuela', torrevieja: 'Torrevieja', guardamar: 'Guardamar del Segura', almoradi: 'Almoradí' }
+ },
+ fr: {
+ nav_home: 'Accueil', nav_towns: 'Villages', nav_events: 'Événements', nav_tips: 'Conseils', nav_contact: 'Contact',
+ hero_title: 'Tours dans la Vega Baja del Segura',
+ hero_sub: 'Découvrez le patrimoine, la nature et l’essence authentique d’Orihuela, Torrevieja, Guardamar et des plus beaux villages de la région.',
+ hero_btn: 'Explorer les villages',
+ about_title: 'La Vega Baja vous attend',
+ about_sub: 'Une région de contrastes entre huertas, côte, lagunes et monuments historiques',
+ towns_title: 'Principaux villages avec tours',
+ towns_sub: 'Parcours pédestres d’environ 1 heure. Choisissez une destination et suivez l’itinéraire détaillé',
+ card_orihuela: 'Centre historique monumental, cathédrale, Miguel Hernández et « l’Escorial du Levant ».',
+ card_torrevieja: 'Promenade maritime, Bella Lola, Eras de la Sal et fort lien avec la mer et le sel.',
+ card_guardamar: 'Château, dunes, pinède de l’ingénieur Mira et vestiges phéniciens et islamiques.',
+ card_almoradi: 'Plaza de la Constitución, tracé de Larramendi après le séisme de 1829 et patrimoine local.',
+ btn_locked: 'Voir l’itinéraire complet',
+ btn_unlocked: 'Voir l’itinéraire complet',
+ badge_unlocked: '✓ Débloqué',
+        audio_title: '🎧 Guide audio de l’itinéraire',
+        audio_hint: 'Écoutez l’explication étape par étape pendant le parcours.',
+ events_title: 'Prochaines randonnées guidées',
+ events_sub: 'Parcours et événements dans la région',
+ tips_title: 'Conseils pour profiter des tours',
+ footer_tagline: 'Votre guide pour découvrir les trésors de la Vega Baja del Segura.',
+ modal_title: 'Débloquer l’itinéraire',
+ modal_desc: 'Accédez à l’itinéraire complet étape par étape de ce tour.',
+ modal_desc_town: 'Accédez à l’itinéraire complet étape par étape de {town}.',
+ modal_per: '/ itinéraire',
+        
+        
+        
+        redsys_title: 'Paiement sécurisé par carte (Redsys)',
+        redsys_hint: 'Vous serez redirigé vers la passerelle bancaire Redsys pour payer 2,99 € par carte de façon sécurisée.',
+        redsys_note: 'Nous ne collectons pas les données de carte sur ce site : elles sont saisies uniquement sur Redsys.',
+        redsys_error: 'Impossible de démarrer le paiement. Réessayez.',
+        pay_disclaimer: 'Paiement sécurisé par carte via Redsys.',
+
+        alert_name: 'Indiquez votre nom pour identifier le paiement.',
+ label_name: 'Nom du payeur',
+ label_number: 'Numéro de carte',
+ label_exp: 'Expiration',
+ label_cvc: 'CVC',
+ 
+ 
+ btn_cancel: 'Annuler',
+ btn_pay: 'Payer 2,99 € par carte',
+ 
+ pay_disclaimer: 'Après avoir payé sur le compte indiqué, confirmez pour débloquer l’itinéraire.',
+ success_title: 'Paiement effectué !',
+ success_msg: 'L’itinéraire a été débloqué. Vous pouvez maintenant le consulter.',
+ btn_view: 'Voir l’itinéraire',
+ processing: 'Traitement...',
+ alert_card: 'Veuillez remplir tous les champs de la carte.',
+
+ start_label: 'Point de départ :',
+ tips_heading: 'Conseils pratiques',
+ about_h3: 'Votre terre et la mienne',
+ about_p1: 'La Vega Baja del Segura, dans le sud d’Alicante, est une terre de riches contrastes : la huerta la plus fertile d’Europe, des lagunes roses, des dunes de pins, des châteaux et un patrimoine monumental exceptionnel.',
+ about_p2: 'Découvrez des parcours et itinéraires détaillés dans les villages les plus emblématiques de la région.',
+ feat1: 'Patrimoine historique', feat2: 'Parcs naturels', feat3: 'Côte et dunes', feat4: 'Huerta et gastronomie',
+ tipcard1_t: 'Chaussures confortables', tipcard1_d: 'Beaucoup de parcours se font à pied. Portez des baskets ou des chaussures de randonnée.',
+ tipcard2_t: 'Hydratation', tipcard2_d: 'Surtout en été. Emportez toujours de l’eau et une protection solaire.',
+ tipcard3_t: 'Réservez votre itinéraire', tipcard3_d: 'Choisissez un village et débloquez son itinéraire complet.',
+ tipcard4_t: 'Itinéraires numériques', tipcard4_d: 'Accédez aux itinéraires détaillés après paiement.',
+ footer_brand: 'VegaBaja Tours', footer_links: 'Liens utiles', footer_towns: 'Villages', footer_contact: 'Contact', footer_offices: 'Offices de tourisme',
+ ev1_t: 'GR-92 Guardamar → Torrevieja',
+ ev1_d: '15 km de côte, difficulté facile-moyenne. Guide, ravitaillement et transport inclus. Places limitées à 100 personnes.',
+ ev2_t: 'GR-92 Torrevieja → Pilar de la Horadada',
+ ev2_d: 'Deuxième étape du Sentier de la Méditerranée le long du littoral de Torrevieja, Orihuela Costa et Pilar de la Horadada.',
+ ev3_t: 'Parcours du Parc Naturel de Torrevieja',
+ ev3_d: 'Visites guidées du Parc Naturel des Lagunes de La Mata et Torrevieja et du Moulin à Eau (réservation préalable).',
+ ori_name: 'Orihuela',
+ ori_meta: 'Tour ~1 heure · 2–2,5 km · Difficulté facile',
+ ori_intro: 'Capitale historique de la Vega Baja. Centre ancien déclaré Ensemble Historique-Artistique. Idéal en extérieur ; entrer dans les monuments ajoute du temps et une petite entrée (≈2 €).',
+ ori_start: 'Collège Diocésain de Santo Domingo (à l’est du centre ancien). Parking à proximité (Paseo de Calvo Sotelo / Glorieta).',
+ ori_s1t: '1. Collège Diocésain de Santo Domingo (5-7 min)',
+ ori_s1d: 'Le bâtiment le plus imposant d’Orihuela. Couvent dominicain et ancienne université du XVIe siècle (Renaissance, maniériste et baroque). Surnommé « l’Escorial du Levant » pour sa taille énorme. Observez la façade principale et l’arc d’accès.',
+ ori_s2t: '2. Maison-Musée Miguel Hernández (3-5 min)',
+ ori_s2d: 'À quelques pas du collège. Maison où vécut le poète d’Orihuela entre 1914 et 1934. De l’extérieur on sent l’ambiance simple qui inspira une grande partie de son œuvre. Entrée selon horaires si ouvert.',
+ ori_s3t: '3. Rues historiques vers le centre (5-7 min)',
+ ori_s3d: 'Continuez vers l’ouest par Calle de la Cruz, Calle San Juan ou similaires. Vous passerez près de la maison natale de Miguel Hernández et du Musée de la Semaine Sainte (ancienne église de La Merced).',
+ ori_s4t: '4. Cathédrale du Sauveur et Sainte Marie + Palais Épiscopal (10-12 min)',
+ ori_s4d: 'Le cœur monumental. La cathédrale (XIIIe-XVIIIe s.) fut construite sur une ancienne mosquée ; remarquez son portail gothique. Juste à côté le Palais Épiscopal (XVIIIe s.), siège du Musée Diocésain d’Art Sacré. La place du Sauveur est idéale pour les photos.',
+ ori_s5t: '5. Église des Saintes Juste et Rufine + Musée de la Muraille (8-10 min)',
+ ori_s5d: 'Église à tour carrée caractéristique et éléments de plusieurs styles (dont des restes arabes). Tout près le Musée de la Muraille, avec restes de murailles médiévales et maisons arabes du XIIe s. (entrée selon horaires).',
+ ori_s6t: '6. Église de Santiago Apóstol et Sanctuaire de Monserrate (8-10 min)',
+ ori_s6d: 'Église de Santiago (XIVe s., gothique, lien avec les Rois Catholiques). Sanctuaire de Notre-Dame de Monserrate (patronne d’Orihuela), édifice baroque des XVIIe-XVIIIe s. L’un des lieux les plus aimés des habitants.',
+ ori_s7t: '7. Fin : Plaza de Santiago ou Glorieta Gabriel Miró',
+ ori_s7d: 'D’ici le fleuve Segura est proche. Vous pouvez continuer à marcher ou chercher un café.',
+ ori_tip1: 'Meilleur moment : matin (10h-13h) ou fin d’après-midi douce pour éviter la chaleur.',
+ ori_tip2: 'Emportez de l’eau, surtout en été.',
+ ori_tip3: 'Extra optionnel : montée au château d’Orihuela (Monte San Miguel) ou la Palmeraie (+30-45 min).',
+ ori_tip4: 'Office de Tourisme : Plaza de la Soledad, 5.',
+ tor_name: 'Torrevieja',
+ tor_meta: 'Tour ~1 heure · 2,5–3 km · Entièrement plat et piéton',
+ tor_intro: 'Parcours centré sur le centre urbain et la promenade maritime. Début et fin dans la zone plage/port. Idéal tôt le matin ou au coucher du soleil.',
+ tor_start: 'Promenade maritime Juan Aparicio, face à la Playa del Cura.',
+ tor_s1t: '1. Promenade maritime Juan Aparicio (0-10 min)',
+ tor_s1d: 'La promenade la plus animée et emblématique. Remodelée en 1999 par l’architecte Carme Pinós. Relie la plage au port. Terrasses, glaciers et vues ouvertes sur la Méditerranée.',
+ tor_s2t: '2. Sculpture « La Bella Lola » (10-15 min)',
+ tor_s2d: 'L’une des images les plus photographiées de Torrevieja. Représente une femme assise regardant la mer, attendant le retour de son mari marin. Symbolise la tradition maritime de la ville.',
+ tor_s3t: '3. Monument à l’Homme de la Mer et Digue de Levante (15-25 min)',
+ tor_s3d: 'Hommage aux marins et pêcheurs. De là vous pouvez apercevoir la Digue de Levante (plus de 1,5 km). Un court tronçon suffit pour profiter des vues et des pergolas.',
+ tor_s4t: '4. Paseo de la Libertad (« les hippies ») et Plaza Waldo Calero (25-35 min)',
+ tor_s4d: 'Promenade connue pour ses stands d’artisanat et de souvenirs. Vous arrivez à la Plaza Waldo Calero, avec des bancs en céramique inspirés des vagues et une fontaine. Coin frais et agréable.',
+ tor_s5t: '5. Société Culturelle Casino de Torrevieja (35-40 min)',
+ tor_s5d: 'Bâtiment moderniste de la fin du XIXe siècle (fondé en 1867). L’un des plus représentatifs de la ville. Aujourd’hui société culturelle et café-restaurant. Vous pouvez entrer voir le salon principal et la salle néo-nasride.',
+ tor_s6t: '6. Paseo Vista Alegre + Monuments aux Musiciens et au Choriste (40-50 min)',
+ tor_s6d: 'Hommage à la forte tradition chorale et au Concours International d’Habaneras et de Polyphonie (Intérêt Touristique International). Le Monument au Choriste est parmi les plus photographiés.',
+ tor_s7t: '7. Ensemble historique Eras de la Sal (50-55 min)',
+ tor_s7d: 'Ancien complexe salinier du XVIIIe siècle (1777-1958). Excellent exemple d’architecture industrielle liée à l’histoire salinière de Torrevieja, l’une des plus grandes productrices de sel marin d’Europe.',
+ tor_s8t: '8. Musée de la Mer et du Sel (optionnel, 55-60 min)',
+ tor_s8d: 'Explique le rapport de Torrevieja avec la mer et le sel à travers objets, maquettes et photographies. Vérifiez les horaires d’entrée.',
+ tor_tip1: 'Tout le parcours est plat et accessible.',
+ tor_tip2: 'Emportez de l’eau et une protection solaire (il fait assez chaud en été).',
+ tor_tip3: 'Extra : Église Archiprêtrale de l’Immaculée Conception (Plaza de la Constitución).',
+ tor_tip4: 'La Lagune Rose et le Parc Naturel méritent une visite à part (voiture/bus, 10-15 min).',
+ gua_name: 'Guardamar del Segura',
+ gua_meta: 'Tour ~1 heure · 1,5–2 km · Facile (petite montée au château)',
+ gua_intro: 'Combine une histoire millénaire, des vues et le début de la pinède/dunes. Le parcours extérieur est libre ; le musée peut avoir une entrée selon les horaires.',
+ gua_start: 'Musée Archéologique de Guardamar (MAG) – Maison de la Culture (Carrer Colom / zone centrale).',
+ gua_s1t: '1. Musée Archéologique de Guardamar – Maison de la Culture (5-8 min)',
+ gua_s1d: 'Restes des cultures qui ont habité la commune (phénicienne, ibère, romaine, islamique et chrétienne). À noter la réplique de la Dame de Guardamar (original au MARQ d’Alicante). Point de départ des parcours officiels « Mémoire de Sable ».',
+ gua_s2t: '2. Château de Guardamar (montée douce + 10-12 min)',
+ gua_s2d: 'Cerro del Castell. Restes de l’ancienne ville fortifiée fondée par Alphonse X le Sage en 1271. Occupation depuis le VIIIe s. av. J.-C. Largement détruit par les séismes de 1829. Meilleures vues du centre, de l’embouchure du Segura et des dunes. Panneaux QR et restes de murailles (Bastion de la Poudre).',
+ gua_s3t: '3. Centre urbain, Plaza de la Constitución et Église de San Jaime (10 min)',
+ gua_s3d: 'Après le séisme de 1829, le village fut redessiné avec un tracé plus ouvert (projet de José Agustín de Larramendi). Tout près la Maison-Musée de l’Ingénieur Mira, dédiée à Francisco Mira i Botella, qui au début du XXe siècle fixa les dunes en plantant des centaines de milliers de pins.',
+ gua_s4t: '4. Promenade de l’Ingénieur Mira et Parc Alfonso XIII – La Pinède (10-12 min)',
+ gua_s4d: 'Promenade historique (ouverte en 1903) reliant le centre à la mer à travers les dunes. Système dunaire d’environ 800 hectares, l’un des plus grands écosystèmes littoraux de la Méditerranée espagnole. Pins pignons, eucalyptus, palmiers et cyprès plantés pour freiner l’avancée du sable.',
+ gua_s5t: '5. Sites Rábita Califal et La Fonteta (optionnel +5-10 min)',
+ gua_s5d: 'Rábita Califal : monastère islamique du Xe siècle, presque unique en son genre sur la péninsule. La Fonteta : cité phénicienne des VIIIe-VIe s. av. J.-C. Tous deux dans la pinède près de la mer. Panneaux d’information disponibles.',
+ gua_s6t: '6. Fin : Parc Reina Sofía ou Plage Centro / Promenade maritime',
+ gua_s6d: 'Espace vert ombragé au bord de la mer. La Plage Centro a le pavillon bleu, des services et des terrasses. D’ici vous pouvez rester sur la plage ou revenir par le même chemin.',
+ gua_tip1: 'Meilleur moment : matin ou après-midi pour éviter la chaleur de midi.',
+ gua_tip2: 'Emportez de l’eau, des chaussures confortables et une protection solaire.',
+ gua_tip3: 'Codes QR à plusieurs points des parcours « Mémoire de Sable » (audioguides).',
+ gua_tip4: 'Version guidée officielle complète (Château + pinède + Rábita/Fonteta) : vendredis en anglais et samedis en espagnol (consultez guardamarturismo.com).',
+ alm_name: 'Almoradí',
+ alm_meta: 'Tour ~1 heure · 1,5–2 km · Très facile et plat',
+ alm_intro: 'Parcours dans le centre historique. Idéal à votre rythme. Après le séisme de 1829, l’ingénieur José Agustín de Larramendi redessina le village avec de larges rues et des îlots réguliers (le fameux « tracé de Larramendi »).',
+ alm_start: 'Plaza de la Constitución (point de rencontre habituel des parcours officiels de la mairie).',
+ alm_s1t: '1. Plaza de la Constitución (début – 10 min)',
+ alm_s1d: 'Centre névralgique et « salon » du village. Ici se concentrent la Mairie, l’église et les grands ficus centenaires qui donnent de l’ombre. Meilleur endroit pour se situer et sentir l’ambiance locale.',
+ alm_s2t: '2. Église Paroissiale de San Andrés (5-10 min)',
+ alm_s2d: 'Juste sur la place. Construite entre 1829 et 1861 après la destruction du temple précédent par le grand séisme. Style néoclassique, avec deux tours latérales et le Sacré-Cœur en haut. Bâtiment le plus emblématique de la commune et symbole de la reconstruction.',
+ alm_s3t: '3. Casino d’Almoradí (Calle Tomás Capdepón – 5-8 min)',
+ alm_s3d: 'À quelques pas de la place. Inauguré en 1882, grand référent social et culturel des XIXe et XXe siècles. Pendant des décennies lieu de réunions, bals et actes de la bourgeoisie locale. Accueille encore expositions et activités.',
+ alm_s4t: '4. Tribunal des Eaux de l’Azud d’Alfeitamí (Calle Tomás Capdepón, 23 – 5 min)',
+ alm_s4d: 'Institution historique clé dans une zone de huerta. Gère et distribue l’eau d’irrigation (canaux et fossés). Reflète l’importance ancestrale de l’eau dans la Vega Baja.',
+ alm_s5t: '5. Théâtre Cortés (5-8 min)',
+ alm_s5d: 'L’un des bâtiments culturels les plus aimés. Inauguré au début du XXe siècle (style néoclassique). Restauré, il maintient une programmation active de théâtre et concerts. Fait partie du parcours du « Tracé de Larramendi ».',
+ alm_s6t: '6. Chapelle de la Calle España et Ancien Hôpital (fin – 8-10 min)',
+ alm_s6d: 'Petite chapelle restaurée (style néogothique) à côté de l’ancien hôpital (projeté en 1929). Aujourd’hui utilisée pour actes civils, mariages et activités culturelles. Belle conclusion du parcours parmi les bâtiments les plus représentatifs du centre.',
+ alm_tip1: 'Durée réelle : 50-70 minutes de marche avec arrêts pour photos et lecture de plaques.',
+ alm_tip2: 'Meilleur moment : matin ou fin d’après-midi (moins de chaleur). Le samedi il y a un marché hebdomadaire autour de la place.',
+ alm_tip3: 'Extra optionnel : Musée du Séisme (Calle de la Reina, 33). Expérience immersive d’environ 45 min dans l’une des maisons originales de la reconstruction de 1829. Réservation préalable requise (payant).',
+ alm_tip4: 'Consultez les parcours guidés de la mairie à l’Office de Tourisme (Plaza de la Constitución) ou sur turismoalmoradi.com.',
+
+ towns: { orihuela: 'Orihuela', torrevieja: 'Torrevieja', guardamar: 'Guardamar del Segura', almoradi: 'Almoradí' }
+ },
+ ar: {
+ nav_home: 'الرئيسية', nav_towns: 'البلدات', nav_events: 'الفعاليات', nav_tips: 'نصائح', nav_contact: 'اتصل بنا',
+ hero_title: 'جولات في فيغا باخا ديل سيغورا',
+ hero_sub: 'اكتشف التراث والطبيعة والجوهر الأصيل لأوريهويلا وتوريفييخا وغواردامار وأجمل بلدات المنطقة.',
+ hero_btn: 'استكشف البلدات',
+ about_title: 'فيغا باخا في انتظارك',
+ about_sub: 'منطقة متناقضات بين البساتين والساحل والبحيرات والمعالم التاريخية',
+ towns_title: 'البلدات الرئيسية مع جولات',
+ towns_sub: 'مسارات مشي لمدة ساعة تقريبًا. اختر وجهة واتبع المسار المفصل',
+ card_orihuela: 'البلدة القديمة الأثرية، الكاتدرائية، ميغيل هرنانديث و«إسكوريال الشرق».',
+ card_torrevieja: 'الممشى البحري، بيلا لولا، إيراس دي لا سال والارتباط القوي بالبحر والملح.',
+ card_guardamar: 'القلعة والكثبان وغابة الصنوبر للمهندس ميرا وبقايا فينيقية وإسلامية.',
+ card_almoradi: 'ساحة الدستور، تخطيط لارامندي بعد زلزال 1829 والتراث المحلي.',
+ btn_locked: 'عرض المسار الكامل',
+ btn_unlocked: 'عرض المسار الكامل',
+ badge_unlocked: '✓ مفتوح',
+        audio_title: '🎧 دليل صوتي للمسار',
+        audio_hint: 'استمع إلى الشرح خطوة بخطوة أثناء السير في المسار.',
+ events_title: 'المسارات الإرشادية القادمة',
+ events_sub: 'مسارات وفعاليات في المنطقة',
+ tips_title: 'نصائح للاستمتاع بالجولات المجانية',
+ footer_tagline: 'دليلك لاكتشاف كنوز فيغا باخا ديل سيغورا.',
+ modal_title: 'فتح المسار',
+ modal_desc: 'احصل على المسار الكامل خطوة بخطوة لهذه الجولة المجانية.',
+ modal_desc_town: 'احصل على المسار الكامل خطوة بخطوة لـ {town}.',
+ modal_per: '/ مسار',
+        
+        
+        
+        redsys_title: 'دفع آمن بالبطاقة (Redsys)',
+        redsys_hint: 'سيتم توجيهك إلى بوابة Redsys البنكية لدفع 2,99 € ببطاقة ائتمان أو خصم بأمان.',
+        redsys_note: 'لا نجمع بيانات البطاقة في هذا الموقع: تُدخل فقط في Redsys.',
+        redsys_error: 'تعذر بدء الدفع. حاول مرة أخرى.',
+        pay_disclaimer: 'دفع آمن بالبطاقة عبر Redsys.',
+
+        alert_name: 'أدخل اسمك لتحديد الدفع.',
+ label_name: 'اسم الدافع',
+ label_number: 'رقم البطاقة',
+ label_exp: 'انتهاء الصلاحية',
+ label_cvc: 'CVC',
+ 
+ 
+ btn_cancel: 'إلغاء',
+ btn_pay: 'ادفع 2,99 € بالبطاقة',
+ 
+ pay_disclaimer: 'بعد الدفع إلى الحساب الموضح، أكّد لفتح المسار.',
+ success_title: 'تم الدفع!',
+ success_msg: 'تم فتح المسار. يمكنك الآن الاطلاع عليه.',
+ btn_view: 'عرض المسار',
+ processing: 'جاري المعالجة...',
+ alert_card: 'يرجى إكمال جميع بيانات البطاقة.',
+
+ start_label: 'نقطة البداية:',
+ tips_heading: 'نصائح عملية',
+ about_h3: 'أرضك وأرضي',
+ about_p1: 'فيغا باخا ديل سيغورا، في جنوب أليكانتي، أرض غنية بالتناقضات: أكثر بساتين أوروبا خصوبة، بحيرات وردية، كثبان صنوبرية، قلاع وتراث معماري استثنائي.',
+ about_p2: 'كثير من مساراتها وزياراتها الإرشادية مجانية تمامًا أو تعمل بنظام البقشيش (جولة مجانية).',
+ feat1: 'تراث تاريخي', feat2: 'منتزهات طبيعية', feat3: 'ساحل وكثبان', feat4: 'بساتين ومأكولات',
+ tipcard1_t: 'أحذية مريحة', tipcard1_d: 'كثير من المسارات سيرًا على الأقدام. ارتدِ أحذية رياضية أو أحذية مشي.',
+ tipcard2_t: 'الترطيب', tipcard2_d: 'خاصة في الصيف. احمل دائمًا ماءً وواقيًا من الشمس.',
+ tipcard3_t: 'احجز مسارك', tipcard3_d: 'اختر بلدة وافتح مسارها الكامل.',
+ tipcard4_t: 'نظام البقشيش', tipcard4_d: 'الجولات المجانية التقليدية تُدفع في النهاية حسب رضاك.',
+ footer_brand: 'VegaBaja Tours', footer_links: 'روابط مفيدة', footer_towns: 'البلدات', footer_contact: 'اتصل بنا', footer_offices: 'مكاتب السياحة',
+ ev1_t: 'GR-92 غواردامار → توريفييخا',
+ ev1_d: '15 كم من الساحل، صعوبة سهلة-متوسطة. تشمل مرشدًا ومرطبات ونقلًا. محدودة بـ 100 شخص.',
+ ev2_t: 'GR-92 توريفييخا → بيلار دي لا هورادادا',
+ ev2_d: 'المرحلة الثانية من مسار البحر المتوسط على ساحل توريفييخا وأوريهويلا كوستا وبيلار دي لا هورادادا.',
+ ev3_t: 'مسارات المنتزه الطبيعي في توريفييخا',
+ ev3_d: 'زيارات إرشادية مجانية لمنتزه بحيرات لا ماتا وتوريفييخا وطاحونة الماء (حجز مسبق).',
+ ori_name: 'أوريهويلا',
+ ori_meta: 'جولة ~1 ساعة · 2–2.5 كم · سهلة',
+ ori_intro: 'العاصمة التاريخية لفيغا باخا. البلدة القديمة معلنة موقعًا تاريخيًا فنيًا. مثالية في الخارج؛ دخول المعالم يضيف وقتًا ورسومًا بسيطة (≈2 يورو).',
+ ori_start: 'كلية سانتو دومينغو الأبرشية (شرق البلدة القديمة). موقف مجاني قريب (ممشى كالفو سوتيلو / الجلورييتا).',
+ ori_s1t: '1. كلية سانتو دومينغو الأبرشية (5-7 دقائق)',
+ ori_s1d: 'أضخم مبنى في أوريهويلا. دير دومينيكاني وجامعة سابقة من القرن السادس عشر (نهضة ومانيرية وباروك). تُعرف بـ«إسكوريال الشرق» لحجمها الهائل. لاحظ الواجهة الرئيسية وقوس المدخل.',
+ ori_s2t: '2. منزل-متحف ميغيل هرنانديث (3-5 دقائق)',
+ ori_s2d: 'على بعد خطوات من الكلية. المنزل الذي عاش فيه الشاعر الأوريهويلي بين 1914 و1934. من الخارج تشعر بالأجواء البسيطة التي ألهمت جزءًا كبيرًا من أعماله. الدخول مجاني إن كان مفتوحًا.',
+ ori_s3t: '3. الشوارع التاريخية نحو المركز (5-7 دقائق)',
+ ori_s3d: 'اتجه غربًا عبر شارع الصليب أو شارع سان خوان أو ما شابه. ستمر قرب مسقط رأس ميغيل هرنانديث ومتحف أسبوع الآلام (كنيسة لا ميرسيد السابقة).',
+ ori_s4t: '4. كاتدرائية المخلص وسانتا ماريا + القصر الأسقفي (10-12 دقيقة)',
+ ori_s4d: 'القلب الأثري. بُنيت الكاتدرائية (القرون 13-18) فوق مسجد قديم؛ تبرز بوابتها القوطية. بجوارها القصر الأسقفي (القرن 18)، مقر متحف الفن المقدس الأبرشي. ساحة المخلص مثالية للصور.',
+ ori_s5t: '5. كنيسة القديستين خوستا وروفينا + متحف السور (8-10 دقائق)',
+ ori_s5d: 'كنيسة ببرج مربع مميز وعناصر من أساليب متعددة (بما فيها بقايا عربية). قريبًا متحف السور، مع بقايا أسوار القرون الوسطى ومنازل عربية من القرن 12 (دخول مجاني).',
+ ori_s6t: '6. كنيسة سانتياغو الرسول ومزار مونسيراتي (8-10 دقائق)',
+ ori_s6d: 'كنيسة سانتياغو (القرن 14، قوطية، مرتبطة بالملوك الكاثوليك). مزار سيدة مونسيراتي (شفيعة أوريهويلا)، مبنى باروكي من القرنين 17-18. من أحب الأماكن لأهالي المدينة.',
+ ori_s7t: '7. النهاية: ساحة سانتياغو أو جلورييتا غابرييل ميرو',
+ ori_s7d: 'من هنا نهر سيغورا قريب. يمكنك متابعة المشي أو البحث عن مقهى.',
+ ori_tip1: 'أفضل وقت: الصباح (10:00-13:00) أو بعد الظهر المعتدل لتجنب الحر.',
+ ori_tip2: 'احمل ماءً، خاصة في الصيف.',
+ ori_tip3: 'إضافة اختيارية: الصعود إلى قلعة أوريهويلا (جبل سان ميغيل) أو بستان النخيل (+30-45 دقيقة).',
+ ori_tip4: 'مكتب السياحة: ساحة لا سوليداد، 5.',
+ tor_name: 'توريفييخا',
+ tor_meta: 'جولة ~1 ساعة · 2.5–3 كم · مستوية بالكامل ومخصصة للمشاة',
+ tor_intro: 'مسار يركز على المركز الحضري والممشى البحري. يبدأ وينتهي في منطقة الشاطئ/الميناء. مثالي في الصباح الباكر أو عند الغروب.',
+ tor_start: 'ممشى خوان أباريثيو البحري، مقابل شاطئ إل كورا.',
+ tor_s1t: '1. ممشى خوان أباريثيو البحري (0-10 دقائق)',
+ tor_s1d: 'أنشط المماشي وأكثرها رمزية. أُعيد تصميمه عام 1999 من المهندسة كارمي بينوس. يربط الشاطئ بالميناء. شرفات ومقاهي آيس كريم وإطلالات مفتوحة على المتوسط.',
+ tor_s2t: '2. منحوتة «بيلا لولا» (10-15 دقيقة)',
+ tor_s2d: 'من أكثر صور توريفييخا تصويرًا. تمثل امرأة جالسة تنظر إلى البحر تنتظر عودة زوجها البحار. ترمز إلى تقاليد المدينة البحرية.',
+ tor_s3t: '3. نصب رجل البحر وحاجز ليفانتي (15-25 دقيقة)',
+ tor_s3d: 'تكريم للبحارة والصيادين. من هنا يمكنك الإطلال على حاجز ليفانتي (أكثر من 1.5 كم). يكفي السير مسافة قصيرة للاستمتاع بالإطلالات والبرجولات.',
+ tor_s4t: '4. ممشى الحرية («الهيبز») وساحة والدو كاليرو (25-35 دقيقة)',
+ tor_s4d: 'ممشى معروف بأكشاك الحرف والهدايا. تصل إلى ساحة والدو كاليرو بمقاعد خزفية مستوحاة من أمواج البحر ونافورة. ركن منعش ولطيف.',
+ tor_s5t: '5. نادي كازينو توريفييخا الثقافي (35-40 دقيقة)',
+ tor_s5d: 'مبنى حداثي من أواخر القرن 19 (تأسس 1867). من أكثر مباني المدينة تمثيلًا. اليوم جمعية ثقافية ومقهى-مطعم. يمكنك الدخول لرؤية الصالة الرئيسية والغرفة ذات الطراز الناصري الجديد.',
+ tor_s6t: '6. ممشى فيستا أليغري + نصبا الموسيقيين والمغني الكورالي (40-50 دقيقة)',
+ tor_s6d: 'تكريم لتقليد الكورال القوي ومسابقة الهابانيرا والبوليفونية الدولية (مصلحة سياحية دولية). نصب المغني الكورالي من الأكثر تصويرًا.',
+ tor_s7t: '7. مجمع إيراس دي لا سال التاريخي (50-55 دقيقة)',
+ tor_s7d: 'مجمع ملحي قديم من القرن 18 (1777-1958). مثال ممتاز للعمارة الصناعية المرتبطة بتاريخ الملح في توريفييخا، التي كانت من أكبر منتجي ملح البحر في أوروبا.',
+ tor_s8t: '8. متحف البحر والملح (اختياري، 55-60 دقيقة)',
+ tor_s8d: 'يشرح علاقة توريفييخا بالبحر والملح عبر قطع ونماذج وصور. الدخول عادة مجاني (تحقق من المواعيد).',
+ tor_tip1: 'المسار بأكمله مستوٍ وسهل الوصول.',
+ tor_tip2: 'احمل ماءً وواقيًا من الشمس (الجو حار جدًا صيفًا).',
+ tor_tip3: 'إضافة: كنيسة الحبل بلا دنس الأبرشية (ساحة الدستور).',
+ tor_tip4: 'البحيرة الوردية والمنتزه الطبيعي يستحقان زيارة منفصلة (سيارة/حافلة، 10-15 دقيقة).',
+ gua_name: 'غواردامار ديل سيغورا',
+ gua_meta: 'جولة ~1 ساعة · 1.5–2 كم · سهلة (صعود خفيف إلى القلعة)',
+ gua_intro: 'تجمع تاريخًا يمتد لآلاف السنين وإطلالات وبداية غابة الصنوبر/الكثبان. كل شيء مجاني (المتحف برسم رمزي أو مجاني حسب المواعيد).',
+ gua_start: 'المتحف الأثري في غواردامار (MAG) – دار الثقافة (شارع كولوم / المنطقة المركزية).',
+ gua_s1t: '1. المتحف الأثري – دار الثقافة (5-8 دقائق)',
+ gua_s1d: 'بقايا الثقافات التي سكنت البلدية (فينيقية وإيبيرية ورومانية وإسلامية ومسيحية). تبرز نسخة سيدة غواردامار (الأصل في مارق أليكانتي). نقطة انطلاق مسارات «ذاكرة الرمال» الرسمية.',
+ gua_s2t: '2. قلعة غواردامار (صعود خفيف + 10-12 دقيقة)',
+ gua_s2d: 'تلة الكاستيل. بقايا البلدة المسورة القديمة التي أسسها ألفونسو العاشر الحكيم عام 1271. استيطان منذ القرن 8 ق.م. دُمرت إلى حد كبير بزلزالي 1829. أفضل إطلالات على المركز ومصب سيغورا والكثبان. لوحات QR وبقايا أسوار (حصن البارود).',
+ gua_s3t: '3. المركز الحضري وساحة الدستور وكنيسة سان خايمي (10 دقائق)',
+ gua_s3d: 'بعد زلزال 1829 أُعيد تخطيط البلدة بتخطيط أكثر انفتاحًا (مشروع خوسيه أغوستين دي لارامندي). قريبًا منزل-متحف المهندس ميرا، المخصص لفرانثيسكو ميرا إي بوتيلا الذي ثبّت الكثبان مطلع القرن 20 بزراعة مئات آلاف أشجار الصنوبر.',
+ gua_s4t: '4. ممشى المهندس ميرا ومنتزه ألفونسو الثالث عشر – غابة الصنوبر (10-12 دقيقة)',
+ gua_s4d: 'ممشى تاريخي (افتُتح 1903) يربط المركز بالبحر عبر الكثبان. نظام كثبان نحو 800 هكتار، من أكبر المنظومات الساحلية في المتوسط الإسباني. صنوبر ثمري وأوكاليبتوس ونخيل وسرو لوقف زحف الرمال.',
+ gua_s5t: '5. موقعا الرابطة الخليفة ولا فونتيتا (اختياري +5-10 دقائق)',
+ gua_s5d: 'الرابطة الخليفة: دير إسلامي من القرن 10، شبه فريد من نوعه في شبه الجزيرة. لا فونتيتا: مدينة فينيقية من القرون 8-6 ق.م. كلاهما بين غابة الصنوبر قرب البحر. لوحات إرشادية متوفرة.',
+ gua_s6t: '6. النهاية: منتزه الملكة صوفيا أو شاطئ المركز / الممشى البحري',
+ gua_s6d: 'مساحة خضراء مظللة بجانب البحر. شاطئ المركز يحمل العلم الأزرق وخدمات وشرفات. من هنا يمكنك البقاء على الشاطئ أو العودة بنفس الطريق.',
+ gua_tip1: 'أفضل وقت: الصباح أو بعد الظهر لتجنب حر الظهيرة.',
+ gua_tip2: 'احمل ماءً وأحذية مريحة وواقيًا من الشمس.',
+ gua_tip3: 'رموز QR في عدة نقاط من مسارات «ذاكرة الرمال» (دليل صوتي مجاني).',
+ gua_tip4: 'النسخة الإرشادية الرسمية الكاملة (القلعة + الغابة + الرابطة/فونتيتا): الجمعة بالإنجليزية والسبت بالإسبانية (راجع guardamarturismo.com).',
+ alm_name: 'ألمورادي',
+ alm_meta: 'جولة ~1 ساعة · 1.5–2 كم · سهلة جدًا ومستوية',
+ alm_intro: 'مسار في المركز التاريخي. مثالي على وتيرتك. بعد زلزال 1829 أعاد المهندس خوسيه أغوستين دي لارامندي تخطيط البلدة بشوارع واسعة وكتل منتظمة (التخطيط الشهير «تخطيط لارامندي»).',
+ alm_start: 'ساحة الدستور (نقطة اللقاء المعتادة لمسارات البلدية الرسمية).',
+ alm_s1t: '1. ساحة الدستور (البداية – 10 دقائق)',
+ alm_s1d: 'مركز البلدة و«صالونها». هنا تتجمع دار البلدية والكنيسة وأشجار الفيكس المعمرة التي تظلل المكان. أفضل مكان للتوجه والشعور بالأجواء المحلية.',
+ alm_s2t: '2. كنيسة سان أندريس الرعوية (5-10 دقائق)',
+ alm_s2d: 'في الساحة مباشرة. بُنيت بين 1829 و1861 بعد دمار المعبد السابق بالزلزال الكبير. أسلوب كلاسيكي جديد، ببرجين جانبيين والقلب المقدس في الأعلى. المبنى الأكثر رمزية في البلدية ورمز إعادة الإعمار.',
+ alm_s3t: '3. كازينو ألمورادي (شارع توماس كابدبون – 5-8 دقائق)',
+ alm_s3d: 'على بعد خطوات من الساحة. افتُتح عام 1882، مرجع اجتماعي وثقافي كبير في القرنين 19 و20. لعقود كان مكان اللقاءات والرقصات ومناسبات البرجوازية المحلية. ما زال يستضيف معارض وأنشطة.',
+ alm_s4t: '4. محكمة مياه سد ألفيتمامي (شارع توماس كابدبون، 23 – 5 دقائق)',
+ alm_s4d: 'مؤسسة تاريخية أساسية في منطقة بساتين. تدير وتوزع مياه الري (القنوات والمصارف). تعكس الأهمية العريقة للماء في فيغا باخا.',
+ alm_s5t: '5. مسرح كورتيس (5-8 دقائق)',
+ alm_s5d: 'من أحب المباني الثقافية. افتُتح مطلع القرن 20 (أسلوب كلاسيكي جديد). مُرمم ويحافظ على برنامج نشط للمسرح والحفلات. جزء من مسار «تخطيط لارامندي».',
+ alm_s6t: '6. كنيسة شارع إسبانيا والمستشفى القديم (النهاية – 8-10 دقائق)',
+ alm_s6d: 'كنيسة صغيرة مُرممة (أسلوب قوطي جديد) بجانب المستشفى القديم (صُمم 1929). تُستخدم اليوم للمناسبات المدنية والأعراس والأنشطة الثقافية. خاتمة جيدة للمسار بين أبرز مباني المركز.',
+ alm_tip1: 'المدة الفعلية: 50-70 دقيقة سيرًا مع توقفات للصور وقراءة اللوحات.',
+ alm_tip2: 'أفضل وقت: الصباح أو أواخر بعد الظهر (حر أقل). أيام السبت يوجد سوق أسبوعي حول الساحة.',
+ alm_tip3: 'إضافة اختيارية: متحف الزلزال (شارع لا رينا، 33). تجربة غامرة نحو 45 دقيقة في أحد منازل إعادة إعمار 1829 الأصلية. يتطلب حجزًا مسبقًا (ليس مجانيًا).',
+ alm_tip4: 'راجع المسارات الإرشادية المجانية للبلدية في مكتب السياحة (ساحة الدستور) أو turismoalmoradi.com.',
+
+ towns: { orihuela: 'أوريهويلا', torrevieja: 'توريفييخا', guardamar: 'غواردامار ديل سيغورا', almoradi: 'ألمورادي' }
+ }
+ };
+
+ 
+ let currentLang = localStorage.getItem('vbf_lang') || 'es';
+
+ function t(key) {
+   const dict = translations[currentLang] || translations.es;
+   return dict[key] !== undefined ? dict[key] : (translations.es[key] || key);
+ }
+
+ function updateAudioLanguage(lang) {
+   document.querySelectorAll('audio[data-town]').forEach(function (el) {
+     var town = el.getAttribute('data-town');
+     var next = (lang === 'es')
+       ? ('audio/' + town + '.mp3')
+       : ('audio/' + town + '_' + lang + '.mp3');
+     var current = el.getAttribute('src') || '';
+     if (current !== next) {
+       var wasPlaying = !el.paused && !el.ended;
+       var tpos = el.currentTime || 0;
+       el.pause();
+       el.src = next;
+       el.load();
+       if (wasPlaying) {
+         el.addEventListener('loadedmetadata', function once() {
+           el.removeEventListener('loadedmetadata', once);
+           try { el.currentTime = tpos; } catch (e) {}
+           el.play().catch(function () {});
+         });
+       }
+     }
+   });
+ }
+
+ function applyLanguage(lang) {
+   currentLang = lang;
+   localStorage.setItem('vbf_lang', lang);
+   document.documentElement.lang = lang;
+   document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+   updateAudioLanguage(lang);
+
+   document.querySelectorAll('.lang-btn').forEach(function (btn) {
+     btn.classList.toggle('active', btn.dataset.lang === lang);
+   });
+
+   document.querySelectorAll('[data-i18n]').forEach(function (el) {
+     var key = el.getAttribute('data-i18n');
+     var val = t(key);
+     if (val && typeof val === 'string') {
+       if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') el.placeholder = val;
+       else el.textContent = val;
+     }
+   });
+
+   document.querySelectorAll('.itinerary-btn').forEach(function (btn) {
+     btn.innerHTML = t('btn_unlocked');
+   });
+ }
+
+ document.querySelectorAll('.lang-btn').forEach(function (btn) {
+   btn.addEventListener('click', function () {
+     applyLanguage(btn.dataset.lang);
+   });
+ });
+
+
+ // ========== Unlock / payment (solo Redsys) ==========
+ const STORAGE_KEY = 'vbfreetours_unlocked';
+
+ function getUnlocked() {
+ try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]'); }
+ catch (e) { return []; }
+ }
+ function setUnlocked(list) {
+ localStorage.setItem(STORAGE_KEY, JSON.stringify(list));
+ }
+ function isUnlocked(town) {
+ return getUnlocked().includes(town);
+ }
+ function unlockTown(town) {
+ const list = getUnlocked();
+ if (!list.includes(town)) {
+ list.push(town);
+ setUnlocked(list);
+ }
+ applyUnlockUI(town);
+ }
+ function applyUnlockUI(town) {
+ const btn = document.querySelector('.itinerary-btn[data-town="' + town + '"]');
+ const badge = document.getElementById('badge-' + town);
+ if (btn) {
+ btn.classList.remove('btn-locked');
+ btn.classList.add('btn-unlocked');
+ btn.innerHTML = t('btn_unlocked');
+ }
+ if (badge) {
+ badge.style.display = 'inline-block';
+ const span = badge.querySelector('[data-i18n]') || badge;
+ if (span && span.hasAttribute && span.hasAttribute('data-i18n')) span.textContent = t('badge_unlocked');
+ else badge.textContent = t('badge_unlocked');
+ }
+ }
+
+ function showItinerary(town) {
+ document.querySelectorAll('.town-detail').forEach(function (el) { el.classList.remove('visible'); });
+ const detail = document.getElementById(town + '-detail');
+ if (detail) {
+ detail.classList.add('visible');
+ setTimeout(function () { detail.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 50);
+ }
+ }
+
+ document.querySelectorAll('.itinerary-btn').forEach(function (btn) {
+ const town = btn.dataset.town;
+ if (isUnlocked(town)) applyUnlockUI(town);
+ });
+
+ let pendingTown = null;
+
+ document.querySelectorAll('.itinerary-btn').forEach(function (btn) {
+ btn.addEventListener('click', function () {
+ const town = this.dataset.town;
+ showItinerary(town);
+ });
+ });
+
+ const modal = document.getElementById('payment-modal');
+ const payView = document.getElementById('modal-pay-view');
+ const successView = document.getElementById('modal-success-view');
+
+ function openPaymentModal(town) {
+ const towns = t('towns');
+ const townName = (towns && towns[town]) || town;
+ const descTpl = t('modal_desc_town') || t('modal_desc');
+ document.getElementById('modal-town-name').textContent = descTpl.replace('{town}', townName);
+ payView.style.display = 'block';
+ successView.style.display = 'none';
+ const nameEl = document.getElementById('card-name');
+ if (nameEl) nameEl.value = '';
+ const payBtn = document.getElementById('modal-pay');
+ if (payBtn) {
+ payBtn.disabled = false;
+ payBtn.textContent = t('btn_pay');
+ }
+ modal.classList.add('open');
+ }
+
+ function closePaymentModal() {
+ modal.classList.remove('open');
+ pendingTown = null;
+ }
+
+ document.getElementById('modal-close').addEventListener('click', closePaymentModal);
+ document.getElementById('modal-cancel').addEventListener('click', closePaymentModal);
+ modal.addEventListener('click', function (e) {
+ if (e.target === modal) closePaymentModal();
+ });
+
+ document.getElementById('modal-pay').addEventListener('click', function () {
+ const btn = this;
+ const nameEl = document.getElementById('card-name');
+ const name = nameEl ? nameEl.value.trim() : '';
+ if (!name) {
+ alert(t('alert_name') || 'Indica tu nombre.');
+ return;
+ }
+
+ btn.disabled = true;
+ btn.textContent = t('processing') || 'Procesando...';
+
+ const town = pendingTown || 'tour';
+ const lang = currentLang || 'es';
+ const apiUrl = 'redsys/crear_pago.php?town=' + encodeURIComponent(town) + '&lang=' + encodeURIComponent(lang);
+
+ fetch(apiUrl, { method: 'GET', credentials: 'same-origin' })
+ .then(function (r) {
+ if (!r.ok) throw new Error('HTTP ' + r.status);
+ return r.json();
+ })
+ .then(function (data) {
+ if (!data || !data.ok || !data.endpoint) throw new Error('Invalid response');
+ try {
+ sessionStorage.setItem('vbf_pending_town', town);
+ sessionStorage.setItem('vbf_pending_order', data.order || '');
+ } catch (e) {}
+
+ const form = document.createElement('form');
+ form.method = 'POST';
+ form.action = data.endpoint;
+ form.style.display = 'none';
+ function add(n, v) {
+ const input = document.createElement('input');
+ input.type = 'hidden';
+ input.name = n;
+ input.value = v;
+ form.appendChild(input);
+ }
+ add('Ds_SignatureVersion', data.Ds_SignatureVersion);
+ add('Ds_MerchantParameters', data.Ds_MerchantParameters);
+ add('Ds_Signature', data.Ds_Signature);
+ document.body.appendChild(form);
+ form.submit();
+ })
+ .catch(function (err) {
+ console.error(err);
+ btn.disabled = false;
+ btn.textContent = t('btn_pay');
+ alert(t('redsys_error') || 'No se pudo iniciar el pago con Redsys.');
+ });
+ });
+
+ document.getElementById('modal-go').addEventListener('click', function () {
+ const town = pendingTown;
+ closePaymentModal();
+ if (town) showItinerary(town);
+ });
+
+ // Tras retorno OK de Redsys
+ (function () {
+ const hash = (location.hash || '').replace('#', '');
+ if (hash && hash.indexOf('-detail') !== -1) {
+ const town = hash.replace('-detail', '');
+ if (isUnlocked(town)) {
+ setTimeout(function () {
+ applyUnlockUI(town);
+ showItinerary(town);
+ }, 300);
+ }
+ }
+ try {
+ const pending = sessionStorage.getItem('vbf_pending_town');
+ if (pending && isUnlocked(pending)) sessionStorage.removeItem('vbf_pending_town');
+ } catch (e) {}
+ })();
+
+
+ // Init language
+ applyLanguage(currentLang);
+ </script>
+
+
+ <script>
+ if ('serviceWorker' in navigator) {
+ window.addEventListener('load', function () {
+ navigator.serviceWorker.register('./sw.js').catch(function () {});
+ });
+ }
+ </script>
+</body>
+</html>
